@@ -1,34 +1,35 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Best Studio
+  site: 'https://best-studio.b-s-beststudio.workers.dev'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
-
-# Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Best Studio
+    template: '%s | Best Studio'
+
+  description: 'Academic career planning for research-oriented students. Research experience, RA, Predoc, PhD applications, and long-term academic decision making.'
+
   robots:
     index: true
     follow: true
+
   openGraph:
-    site_name: AstroWind
+    siteName: Best Studio
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
+
   twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
+    handle: ''
+    site: ''
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: zh-CN
   textDirection: ltr
 
 apps:
@@ -38,13 +39,13 @@ apps:
 
     post:
       isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: '/guides/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
     list:
       isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      pathname: 'guides' # Blog main path, you can change this to "articles" (/articles)
       robots:
         index: true
 

@@ -1,6 +1,6 @@
 services:
-  astrowind:
+  best-studio:
     build: .
-    container_name: astrowind
+    container_name: best-studio
     ports:
       - 8080:8080

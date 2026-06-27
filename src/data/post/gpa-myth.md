@@ -1,8 +1,8 @@
 ---
 publishDate: 2024-04-20T00:00:00Z
-title: 'Myth: Why a High GPA Is Not Enough'
-excerpt: A myth article slot for explaining why GPA is usually a threshold signal, while research evidence and recommendation letters carry more information.
-category: Research Careers
+title: '误区：为什么高 GPA 还不够？'
+excerpt: 解释为什么 GPA 通常只是门槛信号，科研证据和推荐信往往包含更多信息量。
+category: 科研职业
 tags:
   - hidden-rules
   - gpa
@@ -10,22 +10,22 @@ tags:
   - myths
 ---
 
-This article is a durable slot in the Research Careers cluster.
+这篇文章是「科研职业」主题下的长期内容占位。
 
-## Core Question
+## 核心问题
 
-Why do applicants with strong grades still lose to applicants with stronger research evidence?
+为什么成绩很强的申请者，仍然会输给科研证据更强的申请者？
 
-## Future Sections
+## 后续章节
 
-- GPA as a threshold, not a complete admissions argument
-- What grades do and do not tell committees
-- Why recommendation letters contain more information
-- Common failure modes for high-GPA applicants
-- How to redirect effort toward research evidence
+- GPA 是门槛，不是完整录取理由
+- 成绩能告诉委员会什么，不能告诉什么
+- 为什么推荐信包含更多信息量
+- 高 GPA 申请者的常见失败模式
+- 如何把努力转向科研证据
 
-## Related Hubs
+## 相关 Hub
 
-- Research Careers
-- Research Experience
-- PhD Applications
+- 科研职业
+- 科研经历
+- PhD 申请

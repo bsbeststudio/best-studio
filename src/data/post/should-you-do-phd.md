@@ -1,30 +1,30 @@
 ---
 publishDate: 2024-04-01T00:00:00Z
-title: Should You Do a PhD?
-excerpt: A decision article for students who need to test whether a research degree fits their goals, incentives, and tolerance for uncertainty.
-category: Research Careers
+title: 你真的适合读 PhD 吗？
+excerpt: 帮助中国学生判断 PhD 是否符合自己的目标、动机和对不确定性的承受能力。
+category: 科研职业
 tags:
   - phd-decision
   - research-careers
   - career-planning
 ---
 
-This article is a durable slot in the Research Careers cluster.
+这篇文章是「科研职业」主题下的长期内容占位。
 
-## Core Question
+## 核心问题
 
-Should you build the next several years around research training, or are you using the PhD label as a substitute for a clearer career decision?
+你是真的想接受长期科研训练，还是在用 PhD 这个标签替代更清晰的职业决策？
 
-## Future Sections
+## 后续章节
 
-- What a PhD optimizes for
-- Signals that research work fits you
-- Signals that you may be optimizing for prestige, safety, or delay
-- Opportunity cost compared with industry, policy, or master programs
-- Questions to answer before spending time on applications
+- PhD 到底在优化什么
+- 哪些信号说明你适合科研
+- 哪些信号说明你可能只是在追求名校、稳定或延迟选择
+- 和工业界、政策机构、硕士项目相比的机会成本
+- 在准备申请材料前应该先回答的问题
 
-## Related Hubs
+## 相关 Hub
 
-- Research Careers
-- Research Experience
-- PhD Applications
+- 科研职业
+- 科研经历
+- PhD 申请

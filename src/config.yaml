@@ -9,7 +9,7 @@ metadata:
     default: Best Studio
     template: '%s | Best Studio'
 
-  description: 'Academic career planning for research-oriented students. Research experience, RA, Predoc, PhD applications, and long-term academic decision making.'
+  description: '面向中国学生的学术早期职业规划知识库，覆盖科研经历、RA、Predoc、PhD 申请和长期学术职业决策。'
 
   robots:
     index: true

@@ -3,56 +3,42 @@ import Layout from '~/layouts/PageLayout.astro';
 import { topicClusters } from '~/data/topicClusters';
 
 const metadata = {
-  title: 'Start Here',
-  description: 'Find the right Best Studio topic cluster for your current stage in academic career planning.',
+  title: '从这里开始',
+  description: '根据你当前所处阶段，找到最适合先读的 Best Studio 中文主题 Hub。',
   canonical: '/start-here',
-  openGraph: {
-    type: 'website',
-    url: '/start-here',
-  },
+  openGraph: { type: 'website', url: '/start-here' },
 };
 
 const stages = [
   {
-    title: 'I am exploring whether research is for me',
-    description: 'Start with research careers before optimizing for applications.',
+    title: '我还在判断自己适不适合科研',
+    description: '先读科研职业，不要一开始就优化申请材料。',
     href: '/research-careers',
   },
   {
-    title: 'I need stronger research experience',
-    description: 'Focus on RA roles, independent work, and evidence of research potential.',
+    title: '我需要更强的科研经历',
+    description: '重点看 RA、独立研究、科研档案和推荐信证据。',
     href: '/research-experience',
   },
-  {
-    title: 'I am considering RA or predoc roles',
-    description: 'Compare the value of full-time research roles, timelines, and opportunity costs.',
-    href: '/ra-predoc',
-  },
-  {
-    title: 'I am preparing PhD applications',
-    description: 'Move into school lists, CV, SOP, recommendations, interviews, and timing.',
-    href: '/phd-applications',
-  },
+  { title: '我在考虑 RA 或 Predoc', description: '比较全职科研岗位、时间成本、推荐信和项目质量。', href: '/ra-predoc' },
+  { title: '我正在准备 PhD 申请', description: '进入选校、CV、SOP、推荐信、面试和时间线。', href: '/phd-applications' },
 ];
 ---
 
 <Layout metadata={metadata}>
   <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
     <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <a class="hover:underline" href="/">Home</a>
-      <span class="mx-2">/</span>
-      <span>Start Here</span>
+      <a class="hover:underline" href="/">首页</a><span class="mx-2">/</span><span>从这里开始</span>
     </nav>
   </section>
 
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
-    <p class="text-sm font-semibold uppercase tracking-wide text-primary">Start Here</p>
+    <p class="text-sm font-semibold uppercase tracking-wide text-primary">起点</p>
     <h1 class="mt-4 font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">
-      Find your current decision point.
+      先找到你现在的决策点。
     </h1>
     <p class="mt-5 max-w-3xl text-xl text-muted">
-      Best Studio is organized as a hub and topic cluster knowledge site. You do not need to read everything in order;
-      start with the decision that matches your stage.
+      Best Studio 是一个 Hub + Topic Cluster 知识库。你不需要按顺序读完所有内容，先从最贴近你当前处境的问题开始。
     </p>
   </section>
 
@@ -61,9 +47,11 @@ const stages = [
       {
         stages.map((stage) => (
           <a class="block border border-gray-200 dark:border-slate-700 p-6 hover:border-primary" href={stage.href}>
-            <h2 class="text-xl font-bold">{stage.title}</h2>
-            <p class="mt-3 text-muted">{stage.description}</p>
-            <p class="mt-5 text-sm font-semibold text-primary">Go to this hub</p>
+            <>
+              <h2 class="text-xl font-bold">{stage.title}</h2>
+              <p class="mt-3 text-muted">{stage.description}</p>
+              <p class="mt-5 text-sm font-semibold text-primary">进入这个 Hub</p>
+            </>
           </a>
         ))
       }
@@ -72,21 +60,28 @@ const stages = [
 
   <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
     <div class="mb-6">
-      <p class="text-sm font-semibold uppercase tracking-wide text-primary">Full Map</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">All current topic clusters</h2>
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">完整地图</p><h2
+        class="mt-2 text-3xl font-bold tracking-tight"
+      >
+        当前所有主题 Hub
+      </h2>
     </div>
     <div class="grid gap-4">
       {
         topicClusters.map((cluster) => (
           <div class="border border-gray-200 dark:border-slate-700 p-5">
             <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h3 class="text-lg font-bold">{cluster.title}</h3>
-                <p class="mt-1 text-sm text-muted">{cluster.primaryQuestion}</p>
-              </div>
-              <a class="text-sm font-semibold text-primary hover:underline" href={`/${cluster.slug}`}>
-                Open hub
-              </a>
+              <>
+                <div>
+                  <>
+                    <h3 class="text-lg font-bold">{cluster.title}</h3>
+                    <p class="mt-1 text-sm text-muted">{cluster.primaryQuestion}</p>
+                  </>
+                </div>
+                <a class="text-sm font-semibold text-primary hover:underline" href={`/${cluster.slug}`}>
+                  打开 Hub
+                </a>
+              </>
             </div>
           </div>
         ))
@@ -97,12 +92,13 @@ const stages = [
   <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
     <div class="grid gap-5 md:grid-cols-2">
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">Table of Contents Placeholder</h2>
-        <p class="mt-3 text-sm text-muted">Stage selector, full map, related guides, and future FAQ.</p>
-      </div>
-      <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">Related Articles Placeholder</h2>
-        <p class="mt-3 text-sm text-muted">Future beginner reading paths will appear here.</p>
+        <h2 class="text-lg font-bold">目录占位</h2><p class="mt-3 text-sm text-muted">
+          阶段选择、完整地图、相关指南和未来 FAQ。
+        </p>
+      </div><div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">相关文章占位</h2><p class="mt-3 text-sm text-muted">
+          未来新手阅读路径会放在这里。
+        </p>
       </div>
     </div>
   </section>

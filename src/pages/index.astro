@@ -3,10 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 import { topicClusters } from '~/data/topicClusters';
 
 const metadata = {
-  title: 'Best Studio | Academic Career Planning',
+  title: 'Best Studio | 学术早期职业规划',
   ignoreTitleTemplate: true,
-  description:
-    'A hub and topic cluster knowledge site for research-oriented students planning research careers, RA and predoc paths, and PhD applications.',
+  description: '面向中国学生的学术早期职业规划知识库，覆盖科研职业、科研经历、RA、Predoc 和 PhD 申请。',
   canonical: '/',
   openGraph: {
     type: 'website',
@@ -17,47 +16,32 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
-    <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <span>Home</span>
-    </nav>
+    <nav class="text-sm text-muted" aria-label="Breadcrumb"><span>首页</span></nav>
   </section>
 
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
     <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-primary">Academic Career Planning</p>
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">学术早期职业规划</p>
         <h1 class="mt-4 font-bold font-heading text-4xl md:text-6xl leading-tighter tracking-tighter">
-          A knowledge hub for early research careers.
+          面向中国学生的科研路径知识库。
         </h1>
         <p class="mt-6 text-xl text-muted">
-          Best Studio organizes academic career planning around the decisions students actually face: whether to pursue
-          research, how to build research experience, when RA or predoc roles help, and how PhD applications are
-          evaluated.
+          Best Studio 按真实决策节点组织内容：要不要走科研路线、如何积累科研经历、RA 或 Predoc 是否值得做，以及 PhD
+          申请到底看什么。
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a class="btn-primary" href="/start-here">Start Here</a>
-          <a class="btn" href="/content-map">View Content Map</a>
+          <a class="btn-primary" href="/start-here">从这里开始</a>
+          <a class="btn" href="/content-map">查看内容地图</a>
         </div>
       </div>
       <div class="border border-gray-200 dark:border-slate-700 p-6">
-        <p class="text-sm font-semibold text-muted">Built for scale</p>
+        <p class="text-sm font-semibold text-muted">为长期内容库设计</p>
         <dl class="mt-6 grid grid-cols-2 gap-6">
-          <div>
-            <dt class="text-3xl font-bold">4</dt>
-            <dd class="text-sm text-muted">Core topic hubs now</dd>
-          </div>
-          <div>
-            <dt class="text-3xl font-bold">26+</dt>
-            <dd class="text-sm text-muted">Reserved article slots</dd>
-          </div>
-          <div>
-            <dt class="text-3xl font-bold">5</dt>
-            <dd class="text-sm text-muted">Content types</dd>
-          </div>
-          <div>
-            <dt class="text-3xl font-bold">100s</dt>
-            <dd class="text-sm text-muted">Future guides supported</dd>
-          </div>
+          <div><dt class="text-3xl font-bold">4</dt><dd class="text-sm text-muted">核心 Hub</dd></div>
+          <div><dt class="text-3xl font-bold">26+</dt><dd class="text-sm text-muted">主题页占位</dd></div>
+          <div><dt class="text-3xl font-bold">5</dt><dd class="text-sm text-muted">内容类型</dd></div>
+          <div><dt class="text-3xl font-bold">100s</dt><dd class="text-sm text-muted">未来文章容量</dd></div>
         </dl>
       </div>
     </div>
@@ -65,8 +49,8 @@ const metadata = {
 
   <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
     <div class="mb-8">
-      <p class="text-sm font-semibold uppercase tracking-wide text-primary">Topic Clusters</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">Choose the decision you are facing</h2>
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">主题 Hub</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">从你正在面对的决策开始</h2>
     </div>
     <div class="grid gap-5 md:grid-cols-2">
       {
@@ -78,7 +62,7 @@ const metadata = {
             <p class="text-sm font-semibold text-primary">{cluster.kicker}</p>
             <h3 class="mt-2 text-2xl font-bold">{cluster.title}</h3>
             <p class="mt-3 text-muted">{cluster.description}</p>
-            <p class="mt-5 text-sm font-semibold">Open hub</p>
+            <p class="mt-5 text-sm font-semibold">打开 Hub</p>
           </a>
         ))
       }
@@ -88,12 +72,12 @@ const metadata = {
   <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
     <div class="grid gap-5 md:grid-cols-2">
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">Table of Contents Placeholder</h2>
-        <p class="mt-3 text-sm text-muted">Hero, topic clusters, related articles, and future homepage FAQ.</p>
+        <h2 class="text-lg font-bold">目录占位</h2>
+        <p class="mt-3 text-sm text-muted">Hero、主题 Hub、相关文章和未来首页 FAQ。</p>
       </div>
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">Related Articles Placeholder</h2>
-        <p class="mt-3 text-sm text-muted">Future featured guides and decision pages will appear here.</p>
+        <h2 class="text-lg font-bold">相关文章占位</h2>
+        <p class="mt-3 text-sm text-muted">未来精选指南和决策页会放在这里。</p>
       </div>
     </div>
   </section>

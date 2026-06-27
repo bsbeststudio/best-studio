@@ -20,7 +20,7 @@ const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Guides${currentPage > 1 ? ` - Page ${currentPage}` : ''}`,
+  title: `指南${currentPage > 1 ? ` - 第 ${currentPage} 页` : ''}`,
   robots: {
     index: blogListRobots?.index && currentPage === 1,
     follow: blogListRobots?.follow,
@@ -33,8 +33,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline subtitle="Published academic career planning guides from the Best Studio topic clusters.">Guides</Headline
-    >
+    <Headline subtitle="来自 Best Studio 主题集群的学术早期职业规划文章。">指南</Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>

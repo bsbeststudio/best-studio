@@ -2,67 +2,59 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Mentoring',
-  description: 'Future mentoring information for students who need contextual academic career planning advice.',
+  title: '辅导',
+  description: '面向中国学生的学术早期职业规划辅导占位页。',
   canonical: '/mentoring',
-  openGraph: {
-    type: 'website',
-    url: '/mentoring',
-  },
+  openGraph: { type: 'website', url: '/mentoring' },
 };
 
 const mentoringAreas = [
-  'Research path fit and PhD decision making',
-  'RA, predoc, and master path comparison',
-  'Application strategy and school list planning',
-  'Research experience and recommendation letter diagnostics',
+  '科研路径匹配与 PhD 决策',
+  'RA、Predoc 和硕士路径对比',
+  '申请策略与选校规划',
+  '科研经历和推荐信诊断',
 ];
 ---
 
 <Layout metadata={metadata}>
   <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
     <nav class="text-sm text-muted" aria-label="Breadcrumb">
-      <a class="hover:underline" href="/">Home</a>
-      <span class="mx-2">/</span>
-      <span>Mentoring</span>
+      <a class="hover:underline" href="/">首页</a><span class="mx-2">/</span><span>辅导</span>
     </nav>
   </section>
-
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
     <p class="text-sm font-semibold uppercase tracking-wide text-primary">Mentoring</p>
     <h1 class="mt-4 font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">
-      Context-specific guidance will live here.
+      情境化判断会放在这里。
     </h1>
     <p class="mt-5 max-w-3xl text-xl text-muted">
-      The knowledge base handles general questions. Mentoring is reserved for decisions that depend on a student&apos;s
-      background, timeline, goals, and evidence quality.
+      知识库回答通用问题；辅导用于处理依赖个人背景、时间线、目标和证据质量的具体决策。
     </p>
   </section>
-
   <section class="px-4 md:px-6 py-8 mx-auto max-w-6xl">
     <div class="grid gap-5 md:grid-cols-2">
       {
         mentoringAreas.map((area) => (
           <div class="border border-gray-200 dark:border-slate-700 p-6">
-            <h2 class="text-xl font-bold">{area}</h2>
-            <p class="mt-3 text-sm text-muted">
-              Future placeholder for scope, intake questions, and examples of situations where mentoring is useful.
-            </p>
+            <>
+              <h2 class="text-xl font-bold">{area}</h2>
+              <p class="mt-3 text-sm text-muted">未来会补充适用范围、 intake 问题和典型场景。</p>
+            </>
           </div>
         ))
       }
     </div>
   </section>
-
   <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
     <div class="grid gap-5 md:grid-cols-2">
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">Table of Contents Placeholder</h2>
-        <p class="mt-3 text-sm text-muted">Mentoring scope, intake flow, examples, related articles, and future FAQ.</p>
-      </div>
-      <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">Related Articles Placeholder</h2>
-        <p class="mt-3 text-sm text-muted">Future pre-mentoring reading will appear here.</p>
+        <h2 class="text-lg font-bold">目录占位</h2><p class="mt-3 text-sm text-muted">
+          辅导范围、流程、案例、相关文章和未来 FAQ。
+        </p>
+      </div><div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">相关文章占位</h2><p class="mt-3 text-sm text-muted">
+          未来辅导前必读文章会放在这里。
+        </p>
       </div>
     </div>
   </section>

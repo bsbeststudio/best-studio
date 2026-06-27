@@ -1,24 +1,24 @@
 ---
 publishDate: 2024-04-10T00:00:00Z
-title: What Counts as Research Experience?
-excerpt: A myth and guide slot for separating execution-heavy assistant work from experience that demonstrates research judgment.
-category: Research Experience
+title: 什么算科研经历？
+excerpt: 区分执行型 RA 工作和真正能体现研究判断力的经历。
+category: 科研经历
 tags:
   - research-experience
   - ra
   - hidden-rules
 ---
 
-This article is a durable slot in the Research Experience cluster.
+这篇文章是「科研经历」主题下的长期内容占位。
 
-## Core Question
+## 核心问题
 
-What kind of research work gives an admissions committee real evidence that you can become a researcher?
+什么样的科研工作，能让招生委员会相信你有成为研究者的潜力？
 
-## Future Sections
+## 后续章节
 
-- Execution work vs research judgment
-- Evidence committees can infer from RA work
-- How to turn assigned tasks into stronger signals
-- How to describe research experience without exaggeration
-- Self-audit checklist
+- 执行任务 vs 研究判断
+- 委员会能从 RA 经历里推断什么
+- 如何把被分配的任务做成更强信号
+- 如何描述科研经历但不夸大
+- 自查清单

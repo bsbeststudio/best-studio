@@ -3,11 +3,93 @@ import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
   title: 'Resources',
+  description: 'Future templates, datasets, checklists, and tools for academic career planning.',
+  canonical: '/resources',
+  openGraph: {
+    type: 'website',
+    url: '/resources',
+  },
 };
+
+const resourceGroups = [
+  {
+    title: 'Templates',
+    items: [
+      'RA and predoc cold email templates',
+      'Recommendation request email',
+      'Academic CV structure',
+      'School list spreadsheet',
+    ],
+  },
+  {
+    title: 'Checklists',
+    items: [
+      'Research experience self-audit',
+      'Predoc offer evaluation',
+      'PhD application readiness',
+      'SOP review checklist',
+    ],
+  },
+  {
+    title: 'Datasets',
+    items: [
+      'Predoc program database',
+      'Application timeline tracker',
+      'Placement outcome notes',
+      'Regional system comparison',
+    ],
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">Resources</h1>
+  <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
+    <nav class="text-sm text-muted" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span class="mx-2">/</span>
+      <span>Resources</span>
+    </nav>
+  </section>
+
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
+    <p class="text-sm font-semibold uppercase tracking-wide text-primary">Resources</p>
+    <h1 class="mt-4 font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">
+      Reusable tools will live here.
+    </h1>
+    <p class="mt-5 max-w-3xl text-xl text-muted">
+      This page is reserved for practical resources that support the topic clusters: templates, checklists, datasets,
+      and decision worksheets.
+    </p>
+  </section>
+
+  <section class="px-4 md:px-6 py-8 mx-auto max-w-6xl">
+    <div class="grid gap-5 md:grid-cols-3">
+      {
+        resourceGroups.map((group) => (
+          <div class="border border-gray-200 dark:border-slate-700 p-6">
+            <h2 class="text-xl font-bold">{group.title}</h2>
+            <ul class="mt-4 space-y-3 text-sm text-muted">
+              {group.items.map((item) => (
+                <li class="border-l border-gray-200 pl-3 dark:border-slate-700">{item}</li>
+              ))}
+            </ul>
+            <p class="mt-5 text-sm font-semibold text-primary">Future content placeholder</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
+    <div class="grid gap-5 md:grid-cols-2">
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">Table of Contents Placeholder</h2>
+        <p class="mt-3 text-sm text-muted">Templates, checklists, datasets, related articles, and future FAQ.</p>
+      </div>
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">Related Articles Placeholder</h2>
+        <p class="mt-3 text-sm text-muted">Future resource-linked guides will appear here.</p>
+      </div>
+    </div>
   </section>
 </Layout>

@@ -1,0 +1,79 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { topicClusters, topicPath } from '~/data/topicClusters';
+
+const metadata = {
+  title: 'Content Map',
+  description: 'The Best Studio topic cluster map for future academic career planning content.',
+  canonical: '/content-map',
+  openGraph: {
+    type: 'website',
+    url: '/content-map',
+  },
+};
+
+const statusClass = {
+  Published: 'text-green-700 dark:text-green-300',
+  Draft: 'text-blue-700 dark:text-blue-300',
+  Planned: 'text-muted',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
+    <nav class="text-sm text-muted" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">Home</a>
+      <span class="mx-2">/</span>
+      <span>Content Map</span>
+    </nav>
+  </section>
+
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
+    <p class="text-sm font-semibold uppercase tracking-wide text-primary">Content Map</p>
+    <h1 class="mt-4 font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">
+      Hub and topic cluster roadmap.
+    </h1>
+    <p class="mt-5 max-w-3xl text-xl text-muted">
+      This page makes the future article system visible. Each placeholder has a cluster, content type, and status so the
+      site can grow without becoming a generic blog archive.
+    </p>
+  </section>
+
+  <section class="px-4 md:px-6 py-8 mx-auto max-w-6xl">
+    <div class="grid gap-6 lg:grid-cols-2">
+      {
+        topicClusters.map((cluster) => (
+          <article class="border border-gray-200 dark:border-slate-700 p-6">
+            <p class="text-sm font-semibold text-primary">{cluster.kicker}</p>
+            <h2 class="mt-2 text-2xl font-bold">{cluster.title}</h2>
+            <p class="mt-2 text-sm text-muted">{cluster.primaryQuestion}</p>
+            <ul class="mt-5 space-y-3">
+              {cluster.placeholders.map((item) => (
+                <li class="flex gap-3 text-sm">
+                  <span class="w-20 shrink-0 font-semibold">{item.type}</span>
+                  <a class="grow hover:underline" href={topicPath(item)}>
+                    {item.title}
+                  </a>
+                  <span class={`shrink-0 ${statusClass[item.status]}`}>{item.status}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
+    <div class="grid gap-5 md:grid-cols-2">
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">Table of Contents Placeholder</h2>
+        <p class="mt-3 text-sm text-muted">Hub list, topic page inventory, status legend, and future roadmap notes.</p>
+      </div>
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">Related Articles Placeholder</h2>
+        <p class="mt-3 text-sm text-muted">Future editorial planning notes will appear here.</p>
+      </div>
+    </div>
+  </section>
+</Layout>

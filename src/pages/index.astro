@@ -1,239 +1,100 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import { topicClusters } from '~/data/topicClusters';
 
 const metadata = {
-  title: 'Best Studio · 学术早期职业决策知识库',
+  title: 'Best Studio | Academic Career Planning',
   ignoreTitleTemplate: true,
+  description:
+    'A hub and topic cluster knowledge site for research-oriented students planning research careers, RA and predoc paths, and PhD applications.',
+  canonical: '/',
+  openGraph: {
+    type: 'website',
+    url: '/',
+  },
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
+    <nav class="text-sm text-muted" aria-label="Breadcrumb">
+      <span>Home</span>
+    </nav>
+  </section>
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Start Here',
-        href: '/start-here',
-        icon: 'tabler:compass',
-      },
-      { text: '浏览指南', href: '/guides' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Best Studio' }}
-  >
-    <Fragment slot="title">
-      申请路上最大的障碍
-      <br />
-      <span class="text-accent">不是资料少，而是信息不对称</span>
-    </Fragment>
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
+    <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">Academic Career Planning</p>
+        <h1 class="mt-4 font-bold font-heading text-4xl md:text-6xl leading-tighter tracking-tighter">
+          A knowledge hub for early research careers.
+        </h1>
+        <p class="mt-6 text-xl text-muted">
+          Best Studio organizes academic career planning around the decisions students actually face: whether to pursue
+          research, how to build research experience, when RA or predoc roles help, and how PhD applications are
+          evaluated.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn-primary" href="/start-here">Start Here</a>
+          <a class="btn" href="/content-map">View Content Map</a>
+        </div>
+      </div>
+      <div class="border border-gray-200 dark:border-slate-700 p-6">
+        <p class="text-sm font-semibold text-muted">Built for scale</p>
+        <dl class="mt-6 grid grid-cols-2 gap-6">
+          <div>
+            <dt class="text-3xl font-bold">4</dt>
+            <dd class="text-sm text-muted">Core topic hubs now</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-bold">26+</dt>
+            <dd class="text-sm text-muted">Reserved article slots</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-bold">5</dt>
+            <dd class="text-sm text-muted">Content types</dd>
+          </div>
+          <div>
+            <dt class="text-3xl font-bold">100s</dt>
+            <dd class="text-sm text-muted">Future guides supported</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-    <Fragment slot="subtitle">
-      你不知道哪些信息重要、哪些建议适用于你、招生委员会真正在看什么。
-      Best Studio 是一个面向研究型学生的决策知识库——帮你减少信息不对称，做出更清醒的选择。
-    </Fragment>
-  </Hero>
+  <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
+    <div class="mb-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">Topic Clusters</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">Choose the decision you are facing</h2>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        topicClusters.map((cluster) => (
+          <a
+            class="block border border-gray-200 dark:border-slate-700 p-6 hover:border-primary"
+            href={`/${cluster.slug}`}
+          >
+            <p class="text-sm font-semibold text-primary">{cluster.kicker}</p>
+            <h3 class="mt-2 text-2xl font-bold">{cluster.title}</h3>
+            <p class="mt-3 text-muted">{cluster.description}</p>
+            <p class="mt-5 text-sm font-semibold">Open hub</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 
-  <!-- Note Widget ******************* -->
-
-  <Note
-    title="核心立场："
-    description="我们卖的是判断力，不是服务清单。推荐信比 GPA 重要。PI 热情不等于录取。Predoc 不是保底选项。"
-  />
-
-  <!-- Information Asymmetry Problem *** -->
-
-  <Features
-    id="problem"
-    tagline="我们在解决什么"
-    title="学术路上的四层信息不对称"
-    subtitle="这四个问题是绝大多数中国学生在学术早期职业规划中真正的困境，而不是缺少资料。"
-    columns={2}
-    items={[
-      {
-        title: '不知道哪些信息重要',
-        description:
-          '网上的建议极多，但 GPA、RA 经历、推荐信、套磁——这几件事的相对权重，和你想的可能完全不同。优先级错了，努力就打了折扣。',
-        icon: 'tabler:filter',
-      },
-      {
-        title: '不知道哪些建议适用于自己',
-        description:
-          '别人的成功经验未必适合你的背景、时间线和目标。盲目复制经验，可能南辕北辙。你需要的是情境化的判断，不是通用模板。',
-        icon: 'tabler:user-check',
-      },
-      {
-        title: '不知道别人为什么成功或失败',
-        description:
-          '录取结果背后的真实原因往往不透明。看到别人拿到 offer，你不知道是推荐信、研究匹配、还是运气——所以你也不知道自己该补什么。',
-        icon: 'tabler:eye-off',
-      },
-      {
-        title: '不知道导师和 committee 真正怎么想',
-        description:
-          'PI 回邮件热情，不代表你有竞争力。committee 看 SOP，关注点和你写的重点可能完全不同。我们提供的是这一侧的视角。',
-        icon: 'tabler:door',
-      },
-    ]}
-  />
-
-  <!-- Who It's For Widget ************ -->
-
-  <Features2
-    id="who"
-    title="适合哪些人"
-    subtitle="我们覆盖的是学术早期职业（Early Academic Career）——从本科科研，到 Predoc，到 PhD 申请。适用地区包括美国、英国、欧洲大陆和香港。"
-    tagline="适用人群"
-    columns={3}
-    items={[
-      {
-        title: '本科生',
-        description:
-          '有一定科研经历，想知道自己的背景是否足够申请 Predoc 或 PhD，不确定下一步该补什么。',
-        icon: 'tabler:school',
-      },
-      {
-        title: '硕士生',
-        description:
-          '想确认 PhD 是否适合自己，或者如何通过 Predoc 弥补研究经历的不足，再做申请决策。',
-        icon: 'tabler:certificate',
-      },
-      {
-        title: 'RA / Research Assistant',
-        description:
-          '在做 RA，想知道当前经历的含金量、推荐信质量、申请时机是否已经成熟。',
-        icon: 'tabler:microscope',
-      },
-      {
-        title: 'Predoc 申请者',
-        description:
-          '正在申请 Predoc，需要了解哪些项目适合自己、材料侧重点和 PhD 申请有什么不同。',
-        icon: 'tabler:file-search',
-      },
-      {
-        title: 'PhD 申请者',
-        description:
-          '准备申请经济学、金融、公共政策等研究型 PhD，需要有人帮你判断申请策略是否合理。',
-        icon: 'tabler:building-community',
-      },
-      {
-        title: '早期 PhD 学生',
-        description:
-          '刚进入 PhD 项目，面临方向选择、导师关系等问题，需要过来人的视角帮你判断。',
-        icon: 'tabler:chart-line',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- How It's Organized ************* -->
-
-  <Steps
-    title="网站围绕 Decision 组织，而不是 Application"
-    subtitle="大多数申请资源按材料类型分类（简历、文书、推荐信）。我们按决策节点分类——因为材料只是决策之后的执行。"
-    items={[
-      {
-        title: '<span class="font-medium">Career Decisions</span>',
-        description:
-          '该不该读 PhD？该不该做 Predoc？硕士 vs Predoc？选什么研究方向？——这些是最上游的判断，决定了后面所有事情的方向。',
-        icon: 'tabler:git-fork',
-      },
-      {
-        title: '<span class="font-medium">Research Experience</span>',
-        description:
-          '如何找 RA、如何与 PI 合作、如何建立研究能力——这是决策之后的执行路径，也是申请竞争力的核心来源。',
-        icon: 'tabler:microscope',
-      },
-      {
-        title: '<span class="font-medium">Applications</span>',
-        description:
-          'CV、SOP、推荐信、面试、选校——只有在前两步想清楚之后，这些材料才真正有方向可言。',
-        icon: 'tabler:file-description',
-      },
-      {
-        title: '<span class="font-medium">Regions</span>',
-        description:
-          '美国、英国、欧洲、香港——地区不是一级定位，而是应用场景。同一套判断方法，在不同体系下如何落地。',
-        icon: 'tabler:world',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1434030216411-0b793f4b6f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Academic planning',
-    }}
-  />
-
-  <!-- Why Best Studio Widget ********* -->
-
-  <Features
-    id="why"
-    tagline="为什么是我们"
-    title="三个真正的差异化"
-    subtitle="我们是少数真正在学术体系里待过的中文内容生产者，且愿意说市面上不说的话。"
-    columns={3}
-    items={[
-      {
-        title: '独立判断，无机构利益',
-        description:
-          'UChicago PhD 背景提供第一手认知，不是二手整理。我们不向任何项目输送学生，不需要说好听话，判断相对独立。',
-        icon: 'tabler:scale',
-      },
-      {
-        title: '基于证据，愿意说反常识',
-        description:
-          '推荐信比 GPA 重要、PI 热情不等于录取、Predoc 不是保底——这些是我们内容的核心差异化，也是竞品做不到的。',
-        icon: 'tabler:clipboard-data',
-      },
-      {
-        title: '长期规划，不只是申请辅导',
-        description:
-          '我们关注的不是帮你通过这一次申请，而是帮你建立对整个早期学术职业路径的清醒认识，做出适合自己的决定。',
-        icon: 'tabler:map-2',
-      },
-    ]}
-  />
-
-  <!-- Latest Guides Widget *********** -->
-
-  <BlogLatestPosts
-    title="最新指南"
-    information="每篇指南都聚焦一个具体的决策节点或认知盲区。读完之后，你应该对自己当前的处境有更清晰的判断。"
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: '申请一对一辅导',
-        href: '/mentoring',
-        icon: 'tabler:message-circle',
-      },
-      {
-        text: 'Start Here',
-        href: '/start-here',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      需要有人帮你看清处境？
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      一对一辅导的核心是判断力——告诉你你现在的处境到底怎样、下一步该怎么走。<br class="hidden md:inline" />
-      简历修改、文书审阅、面试辅导，都是这个判断力的交付形式。
-    </Fragment>
-  </CallToAction>
+  <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
+    <div class="grid gap-5 md:grid-cols-2">
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">Table of Contents Placeholder</h2>
+        <p class="mt-3 text-sm text-muted">Hero, topic clusters, related articles, and future homepage FAQ.</p>
+      </div>
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h2 class="text-lg font-bold">Related Articles Placeholder</h2>
+        <p class="mt-3 text-sm text-muted">Future featured guides and decision pages will appear here.</p>
+      </div>
+    </div>
+  </section>
 </Layout>

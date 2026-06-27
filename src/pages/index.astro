@@ -5,15 +5,11 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Best Studio',
+  title: 'Best Studio · 学术早期职业规划',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,269 +21,77 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Guides',
+        text: '阅读指南',
         href: '/guides',
         icon: 'tabler:book',
       },
-      { text: 'Mentoring', href: '/mentoring' },
+      { text: '申请辅导', href: '/mentoring' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Best Studio Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Best Studio' }}
   >
     <Fragment slot="title">
-      Best Studio
+      你现在的处境
       <br />
-      <span class="text-accent">Evidence-Based Academic Career Planning</span>
+      <span class="text-accent">到底怎样？下一步该怎么走？</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Academic career planning for research-oriented students. Research experience, RA, Predoc, PhD applications, and
-      long-term academic decision making.
+      面向有研究经历、正在考虑 Predoc 或经济学 PhD 的中国学生。
+      我们提供的不是服务清单，而是判断力——帮你看清自己的处境，做出适合自己的决定。
     </Fragment>
   </Hero>
 
   <!-- Note Widget ******************* -->
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with Best Studio"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023, 2024 and 2025."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility. Now powered by Tailwind CSS v4.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS v4 ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
+  <Note
+    title="核心立场："
+    description="推荐信比 GPA 重要。PI 热情不等于录取。Predoc 不是保底选项。我们只说市面上不说的话。"
   />
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="Best Studio's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro v6',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS v4',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with Best Studio.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing Best Studio community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with Best Studio."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the Best Studio template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by Best Studio! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
+  <!-- Who It's For Widget ************ -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS v4"
-    tagline="Components"
+    id="who"
+    title="适合哪些人"
+    subtitle="无论你处于哪个阶段，核心问题都是一样的：我现在够吗？我下一步该做什么？"
+    tagline="适用人群"
+    columns={3}
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
+        title: '本科生',
         description:
-          "Picture a superhero landing -epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
+          '正在积累研究经历，想知道自己的背景是否够申请 Predoc 或直接申请 PhD，不确定该优先做什么。',
+        icon: 'tabler:school',
       },
       {
-        title: 'Features',
+        title: '硕士生',
         description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
+          '已有一定学术背景，考虑是否值得继续读 PhD，或者如何通过 Predoc 弥补研究经历的不足。',
+        icon: 'tabler:certificate',
       },
       {
-        title: 'Content',
+        title: 'RA / Research Assistant',
         description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
+          '在实验室或机构做 RA，想知道当前的经历是否足够、推荐信质量如何、申请时机是否成熟。',
+        icon: 'tabler:microscope',
       },
       {
-        title: 'Call-to-Action',
+        title: 'Predoc 申请者',
         description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
+          '正在申请 Predoc，需要了解哪些项目适合自己、材料如何准备、如何与教授建立有效联系。',
+        icon: 'tabler:file-search',
       },
       {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
+        title: 'PhD 申请者',
+        description:
+          '准备申请经济学、金融、公共政策等研究型 PhD，需要有人帮你判断申请策略是否合理。',
+        icon: 'tabler:building-community',
       },
       {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        title: '早期研究者',
+        description:
+          '已经进入 PhD 项目或刚开始科研生涯，面临方向选择或导师关系问题，需要过来人的视角。',
+        icon: 'tabler:chart-line',
       },
     ]}
   >
@@ -296,66 +100,77 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
+  <!-- Common Decisions Widget ******** -->
 
-  <BlogLatestPosts
-    title="Find out more in Guides"
-    information={`Guides are used to publish Best Studio resources.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro v6 + Tailwind CSS v4.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that Best Studio offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+  <Features2
+    id="decisions"
+    title="你正在面对的问题"
+    subtitle="这些决策没有标准答案，但有的人比你更早经历过——而且愿意直接告诉你。"
+    tagline="常见决策"
+    columns={2}
     items={[
       {
-        title: 'Why Best Studio?',
+        title: '我适不适合申请 Predoc？',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          'Predoc 不是万能跳板，也不是读不了 PhD 的安慰奖。它适合特定背景、特定目标的人。你需要先弄清楚自己算哪种情况。',
+        icon: 'tabler:help-circle',
       },
       {
-        title: 'What do I need to start?',
+        title: '我的背景现在有多竞争力？',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it is actually our duty to future generations.',
+          'GPA、科研经历、推荐信、发表——这几项的相对权重和你想的可能不一样。我们会告诉你委员会真正在看什么。',
+        icon: 'tabler:award',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: '美国、英国、欧洲还是香港？',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          '不同体系在招生逻辑、Predoc 生态、导师关系上差异很大。选错方向会浪费一年甚至更多。',
+        icon: 'tabler:world',
       },
       {
-        title: "What's something that you don't understand?",
+        title: '我应该怎么建立研究经历？',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          '不是所有 RA 经历都算数。教授的热情不等于你能拿到有价值的推荐信。我们帮你辨别哪些经历真正有用。',
+        icon: 'tabler:git-branch',
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
+  <!-- Why Best Studio Widget ********* -->
 
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+  <Features
+    id="why"
+    tagline="为什么是我们"
+    title="判断力，不是服务清单"
+    subtitle="市面上的申请机构很多，但大多数卖的是流程，不是判断。我们不一样。"
+    columns={3}
+    items={[
+      {
+        title: '独立判断',
+        description:
+          '我们不向任何项目输送学生，没有机构利益。UChicago PhD 背景提供的是第一手认知，不是二手整理。',
+        icon: 'tabler:scale',
+      },
+      {
+        title: '基于证据的建议',
+        description:
+          '我们愿意说反常识的东西——包括你现在的背景不够、某个方向不适合你。不说好听话，只说有用的。',
+        icon: 'tabler:clipboard-data',
+      },
+      {
+        title: '长期规划视角',
+        description:
+          '我们关注的不是帮你通过这一次申请，而是帮你建立对整个学术早期职业路径的清醒认识。',
+        icon: 'tabler:map-2',
+      },
     ]}
+  />
+
+  <!-- Latest Guides Widget *********** -->
+
+  <BlogLatestPosts
+    title="最新指南"
+    information="每篇指南都聚焦一个具体决策或认知盲区。读完之后，你应该对自己的处境有更清晰的判断。"
   />
 
   <!-- CallToAction Widget *********** -->
@@ -364,22 +179,23 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Guides',
-        href: '/guides',
+        text: '申请辅导',
+        href: '/mentoring',
+        icon: 'tabler:message-circle',
       },
       {
-        text: 'Mentoring',
-        href: '/mentoring',
+        text: '先看指南',
+        href: '/guides',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      需要有人帮你看清处境？
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      一对一辅导的核心是判断力，不是改简历。<br class="hidden md:inline" />
+      我们会直接告诉你：你现在的背景够不够，下一步该怎么走。
     </Fragment>
   </CallToAction>
 </Layout>

@@ -5,11 +5,12 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Best Studio · 学术早期职业规划',
+  title: 'Best Studio · 学术早期职业决策知识库',
   ignoreTitleTemplate: true,
 };
 ---
@@ -21,23 +22,23 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: '阅读指南',
-        href: '/guides',
-        icon: 'tabler:book',
+        text: 'Start Here',
+        href: '/start-here',
+        icon: 'tabler:compass',
       },
-      { text: '申请辅导', href: '/mentoring' },
+      { text: '浏览指南', href: '/guides' },
     ]}
     image={{ src: '~/assets/images/hero-image.png', alt: 'Best Studio' }}
   >
     <Fragment slot="title">
-      你现在的处境
+      申请路上最大的障碍
       <br />
-      <span class="text-accent">到底怎样？下一步该怎么走？</span>
+      <span class="text-accent">不是资料少，而是信息不对称</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      面向有研究经历、正在考虑 Predoc 或经济学 PhD 的中国学生。
-      我们提供的不是服务清单，而是判断力——帮你看清自己的处境，做出适合自己的决定。
+      你不知道哪些信息重要、哪些建议适用于你、招生委员会真正在看什么。
+      Best Studio 是一个面向研究型学生的决策知识库——帮你减少信息不对称，做出更清醒的选择。
     </Fragment>
   </Hero>
 
@@ -45,7 +46,43 @@ const metadata = {
 
   <Note
     title="核心立场："
-    description="推荐信比 GPA 重要。PI 热情不等于录取。Predoc 不是保底选项。我们只说市面上不说的话。"
+    description="我们卖的是判断力，不是服务清单。推荐信比 GPA 重要。PI 热情不等于录取。Predoc 不是保底选项。"
+  />
+
+  <!-- Information Asymmetry Problem *** -->
+
+  <Features
+    id="problem"
+    tagline="我们在解决什么"
+    title="学术路上的四层信息不对称"
+    subtitle="这四个问题是绝大多数中国学生在学术早期职业规划中真正的困境，而不是缺少资料。"
+    columns={2}
+    items={[
+      {
+        title: '不知道哪些信息重要',
+        description:
+          '网上的建议极多，但 GPA、RA 经历、推荐信、套磁——这几件事的相对权重，和你想的可能完全不同。优先级错了，努力就打了折扣。',
+        icon: 'tabler:filter',
+      },
+      {
+        title: '不知道哪些建议适用于自己',
+        description:
+          '别人的成功经验未必适合你的背景、时间线和目标。盲目复制经验，可能南辕北辙。你需要的是情境化的判断，不是通用模板。',
+        icon: 'tabler:user-check',
+      },
+      {
+        title: '不知道别人为什么成功或失败',
+        description:
+          '录取结果背后的真实原因往往不透明。看到别人拿到 offer，你不知道是推荐信、研究匹配、还是运气——所以你也不知道自己该补什么。',
+        icon: 'tabler:eye-off',
+      },
+      {
+        title: '不知道导师和 committee 真正怎么想',
+        description:
+          'PI 回邮件热情，不代表你有竞争力。committee 看 SOP，关注点和你写的重点可能完全不同。我们提供的是这一侧的视角。',
+        icon: 'tabler:door',
+      },
+    ]}
   />
 
   <!-- Who It's For Widget ************ -->
@@ -53,32 +90,32 @@ const metadata = {
   <Features2
     id="who"
     title="适合哪些人"
-    subtitle="无论你处于哪个阶段，核心问题都是一样的：我现在够吗？我下一步该做什么？"
+    subtitle="我们覆盖的是学术早期职业（Early Academic Career）——从本科科研，到 Predoc，到 PhD 申请。适用地区包括美国、英国、欧洲大陆和香港。"
     tagline="适用人群"
     columns={3}
     items={[
       {
         title: '本科生',
         description:
-          '正在积累研究经历，想知道自己的背景是否够申请 Predoc 或直接申请 PhD，不确定该优先做什么。',
+          '有一定科研经历，想知道自己的背景是否足够申请 Predoc 或 PhD，不确定下一步该补什么。',
         icon: 'tabler:school',
       },
       {
         title: '硕士生',
         description:
-          '已有一定学术背景，考虑是否值得继续读 PhD，或者如何通过 Predoc 弥补研究经历的不足。',
+          '想确认 PhD 是否适合自己，或者如何通过 Predoc 弥补研究经历的不足，再做申请决策。',
         icon: 'tabler:certificate',
       },
       {
         title: 'RA / Research Assistant',
         description:
-          '在实验室或机构做 RA，想知道当前的经历是否足够、推荐信质量如何、申请时机是否成熟。',
+          '在做 RA，想知道当前经历的含金量、推荐信质量、申请时机是否已经成熟。',
         icon: 'tabler:microscope',
       },
       {
         title: 'Predoc 申请者',
         description:
-          '正在申请 Predoc，需要了解哪些项目适合自己、材料如何准备、如何与教授建立有效联系。',
+          '正在申请 Predoc，需要了解哪些项目适合自己、材料侧重点和 PhD 申请有什么不同。',
         icon: 'tabler:file-search',
       },
       {
@@ -88,9 +125,9 @@ const metadata = {
         icon: 'tabler:building-community',
       },
       {
-        title: '早期研究者',
+        title: '早期 PhD 学生',
         description:
-          '已经进入 PhD 项目或刚开始科研生涯，面临方向选择或导师关系问题，需要过来人的视角。',
+          '刚进入 PhD 项目，面临方向选择、导师关系等问题，需要过来人的视角帮你判断。',
         icon: 'tabler:chart-line',
       },
     ]}
@@ -100,40 +137,41 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- Common Decisions Widget ******** -->
+  <!-- How It's Organized ************* -->
 
-  <Features2
-    id="decisions"
-    title="你正在面对的问题"
-    subtitle="这些决策没有标准答案，但有的人比你更早经历过——而且愿意直接告诉你。"
-    tagline="常见决策"
-    columns={2}
+  <Steps
+    title="网站围绕 Decision 组织，而不是 Application"
+    subtitle="大多数申请资源按材料类型分类（简历、文书、推荐信）。我们按决策节点分类——因为材料只是决策之后的执行。"
     items={[
       {
-        title: '我适不适合申请 Predoc？',
+        title: '<span class="font-medium">Career Decisions</span>',
         description:
-          'Predoc 不是万能跳板，也不是读不了 PhD 的安慰奖。它适合特定背景、特定目标的人。你需要先弄清楚自己算哪种情况。',
-        icon: 'tabler:help-circle',
+          '该不该读 PhD？该不该做 Predoc？硕士 vs Predoc？选什么研究方向？——这些是最上游的判断，决定了后面所有事情的方向。',
+        icon: 'tabler:git-fork',
       },
       {
-        title: '我的背景现在有多竞争力？',
+        title: '<span class="font-medium">Research Experience</span>',
         description:
-          'GPA、科研经历、推荐信、发表——这几项的相对权重和你想的可能不一样。我们会告诉你委员会真正在看什么。',
-        icon: 'tabler:award',
+          '如何找 RA、如何与 PI 合作、如何建立研究能力——这是决策之后的执行路径，也是申请竞争力的核心来源。',
+        icon: 'tabler:microscope',
       },
       {
-        title: '美国、英国、欧洲还是香港？',
+        title: '<span class="font-medium">Applications</span>',
         description:
-          '不同体系在招生逻辑、Predoc 生态、导师关系上差异很大。选错方向会浪费一年甚至更多。',
+          'CV、SOP、推荐信、面试、选校——只有在前两步想清楚之后，这些材料才真正有方向可言。',
+        icon: 'tabler:file-description',
+      },
+      {
+        title: '<span class="font-medium">Regions</span>',
+        description:
+          '美国、英国、欧洲、香港——地区不是一级定位，而是应用场景。同一套判断方法，在不同体系下如何落地。',
         icon: 'tabler:world',
       },
-      {
-        title: '我应该怎么建立研究经历？',
-        description:
-          '不是所有 RA 经历都算数。教授的热情不等于你能拿到有价值的推荐信。我们帮你辨别哪些经历真正有用。',
-        icon: 'tabler:git-branch',
-      },
     ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1434030216411-0b793f4b6f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Academic planning',
+    }}
   />
 
   <!-- Why Best Studio Widget ********* -->
@@ -141,26 +179,26 @@ const metadata = {
   <Features
     id="why"
     tagline="为什么是我们"
-    title="判断力，不是服务清单"
-    subtitle="市面上的申请机构很多，但大多数卖的是流程，不是判断。我们不一样。"
+    title="三个真正的差异化"
+    subtitle="我们是少数真正在学术体系里待过的中文内容生产者，且愿意说市面上不说的话。"
     columns={3}
     items={[
       {
-        title: '独立判断',
+        title: '独立判断，无机构利益',
         description:
-          '我们不向任何项目输送学生，没有机构利益。UChicago PhD 背景提供的是第一手认知，不是二手整理。',
+          'UChicago PhD 背景提供第一手认知，不是二手整理。我们不向任何项目输送学生，不需要说好听话，判断相对独立。',
         icon: 'tabler:scale',
       },
       {
-        title: '基于证据的建议',
+        title: '基于证据，愿意说反常识',
         description:
-          '我们愿意说反常识的东西——包括你现在的背景不够、某个方向不适合你。不说好听话，只说有用的。',
+          '推荐信比 GPA 重要、PI 热情不等于录取、Predoc 不是保底——这些是我们内容的核心差异化，也是竞品做不到的。',
         icon: 'tabler:clipboard-data',
       },
       {
-        title: '长期规划视角',
+        title: '长期规划，不只是申请辅导',
         description:
-          '我们关注的不是帮你通过这一次申请，而是帮你建立对整个学术早期职业路径的清醒认识。',
+          '我们关注的不是帮你通过这一次申请，而是帮你建立对整个早期学术职业路径的清醒认识，做出适合自己的决定。',
         icon: 'tabler:map-2',
       },
     ]}
@@ -170,7 +208,7 @@ const metadata = {
 
   <BlogLatestPosts
     title="最新指南"
-    information="每篇指南都聚焦一个具体决策或认知盲区。读完之后，你应该对自己的处境有更清晰的判断。"
+    information="每篇指南都聚焦一个具体的决策节点或认知盲区。读完之后，你应该对自己当前的处境有更清晰的判断。"
   />
 
   <!-- CallToAction Widget *********** -->
@@ -179,13 +217,13 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: '申请辅导',
+        text: '申请一对一辅导',
         href: '/mentoring',
         icon: 'tabler:message-circle',
       },
       {
-        text: '先看指南',
-        href: '/guides',
+        text: 'Start Here',
+        href: '/start-here',
       },
     ]}
   >
@@ -194,8 +232,8 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      一对一辅导的核心是判断力，不是改简历。<br class="hidden md:inline" />
-      我们会直接告诉你：你现在的背景够不够，下一步该怎么走。
+      一对一辅导的核心是判断力——告诉你你现在的处境到底怎样、下一步该怎么走。<br class="hidden md:inline" />
+      简历修改、文书审阅、面试辅导，都是这个判断力的交付形式。
     </Fragment>
   </CallToAction>
 </Layout>

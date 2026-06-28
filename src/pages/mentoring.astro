@@ -1,0 +1,135 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: '辅导与咨询服务',
+  description: '面向经济学 Predoc、RA 和 PhD 申请者的个人化咨询。Profile Review、申请策略、Mock Interview、长期 Mentoring。',
+  canonical: '/mentoring',
+  openGraph: { type: 'website', url: '/mentoring' },
+};
+
+const services = [
+  {
+    title: 'Profile Review',
+    subtitle: '背景诊断',
+    description:
+      '系统梳理你的科研经历、推荐信来源、课程背景和目标，识别申请材料里的具体短板，并给出优先级建议。适合：不确定自己的背景够不够、不知道从哪里开始改进的申请者。',
+    tags: ['Predoc 申请者', 'PhD 申请者', 'RA 背景评估'],
+  },
+  {
+    title: 'Application Strategy',
+    subtitle: '申请策略',
+    description:
+      '针对你的具体背景，制定选校名单、确定申请时间线、讨论 SOP 叙事方向、推荐信请求策略。不是通用建议，而是根据你的实际情况做判断。适合：准备本轮申请、想把背景转化成最优申请策略的学生。',
+    tags: ['选校策略', 'SOP 方向', '时间线规划'],
+  },
+  {
+    title: 'SOP & CV Review',
+    subtitle: '材料精读',
+    description:
+      'SOP 和 Academic CV 的精读反馈。重点不是改语言，而是判断：叙事逻辑是否成立、能力证据是否有说服力、研究方向是否清晰。适合：SOP 已有初稿、需要具体改进方向的申请者。',
+    tags: ['SOP 逻辑', 'CV 内容取舍', '叙事完整性'],
+  },
+  {
+    title: 'Mock Interview',
+    subtitle: '模拟面试',
+    description:
+      'Predoc 面试或 PhD 面试的模拟练习，包含面试后的逐项反馈。重点覆盖：研究兴趣阐述、RA 经历描述、方法论问题应对、以及「为什么选这个项目」的个性化回答。适合：已收到面试通知、需要系统练习的申请者。',
+    tags: ['Predoc 面试', 'PhD 面试', '研究讨论'],
+  },
+  {
+    title: 'Predoc Path Planning',
+    subtitle: 'Predoc 路径规划',
+    description:
+      '适合正在考虑是否要做 Predoc、或者已经在看 Predoc 机会但不知道如何评估的学生。讨论范围：你目前的背景是否适合直接申请 PhD、Predoc 的机会成本、如何评估具体 offer 的质量。',
+    tags: ['是否需要 Predoc', '导师评估', 'Offer 对比'],
+  },
+  {
+    title: 'Long-term Mentoring',
+    subtitle: '长期 Mentoring',
+    description:
+      '适合处于早期阶段、需要持续指导的学生：从找第一段 RA 开始，到建立推荐信关系、准备申请材料、应对面试，覆盖整个申请周期。不是一次性咨询，而是长期的情境化判断支持。',
+    tags: ['申请全周期', '持续支持', '从 RA 到 PhD'],
+  },
+];
+
+const prereads = [
+  { title: '你真的适合读 PhD 吗？', href: '/guides/should-you-do-phd' },
+  { title: '什么是 Predoc？', href: '/guides/predoc-complete-guide' },
+  { title: 'RA vs Predoc：真正的区别是什么？', href: '/guides/ra-vs-predoc' },
+  { title: '推荐信：招生委员会真正看什么？', href: '/guides/recommendation-letters' },
+  { title: '为什么你的申请材料讲不出一个完整故事？', href: '/guides/narrative-fragmentation' },
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="px-4 md:px-6 pt-8 mx-auto max-w-4xl">
+    <nav class="text-sm text-muted" aria-label="Breadcrumb">
+      <a class="hover:underline" href="/">首页</a><span class="mx-2">/</span><span>辅导</span>
+    </nav>
+  </section>
+
+  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <p class="text-sm font-semibold uppercase tracking-widest text-primary">Mentoring & Consulting</p>
+    <h1 class="mt-4 font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">
+      知识库回答通用问题。<br class="hidden md:block" />咨询处理你的具体情况。
+    </h1>
+    <p class="mt-6 max-w-2xl text-xl text-muted leading-relaxed">
+      同样的问题——「我适合做 Predoc 吗？」「我的推荐信够强吗？」「SOP 逻辑成立吗？」——答案会因为你的背景、时间线、目标和已有证据质量而完全不同。
+    </p>
+    <p class="mt-4 max-w-2xl text-xl text-muted leading-relaxed">
+      这里提供的不是模板，而是基于你的真实情况做出的判断。
+    </p>
+  </section>
+
+  <section class="px-4 md:px-6 pb-16 mx-auto max-w-4xl">
+    <h2 class="text-2xl font-bold font-heading mb-8">服务范围</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        services.map((s) => (
+          <div class="rounded-xl border border-gray-200 dark:border-slate-700 p-6 flex flex-col">
+            <div class="mb-1">
+              <span class="text-xs font-semibold uppercase tracking-widest text-primary">{s.subtitle}</span>
+            </div>
+            <h3 class="text-xl font-bold font-heading mb-3">{s.title}</h3>
+            <p class="text-muted text-sm leading-relaxed flex-1">{s.description}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {s.tags.map((tag) => (
+                <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="px-4 md:px-6 py-12 mx-auto max-w-4xl border-t dark:border-slate-700">
+    <h2 class="text-2xl font-bold font-heading mb-2">预约咨询</h2>
+    <p class="text-muted mb-8 max-w-xl">
+      发邮件说明你的背景和想讨论的问题。我会在 48 小时内回复，确认是否适合以及下一步安排。
+    </p>
+    <a
+      href="mailto:lauren@beststudio.com?subject=咨询预约"
+      class="inline-block rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white hover:bg-secondary transition-colors"
+    >
+      发送预约邮件
+    </a>
+    <p class="mt-4 text-sm text-muted">或者先读完下面的文章，确认你的情况适合哪种服务。</p>
+  </section>
+
+  <section class="px-4 md:px-6 py-12 mx-auto max-w-4xl border-t dark:border-slate-700">
+    <h2 class="text-2xl font-bold font-heading mb-6">咨询前建议先读</h2>
+    <ul class="space-y-3">
+      {
+        prereads.map((p) => (
+          <li>
+            <a href={p.href} class="text-primary hover:underline font-medium">
+              {p.title} →
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

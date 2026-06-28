@@ -3,6 +3,7 @@ site:
   site: 'https://best-studio.b-s-beststudio.workers.dev'
   base: '/'
   trailingSlash: false
+  googleSiteVerificationId: 'dUd_49rtQOZWyPjVsD4im7RsB8I5JdMybI-afzoPZrg'
 
 metadata:
   title:

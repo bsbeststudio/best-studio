@@ -1,6 +1,0 @@
-services:
-  best-studio:
-    build: .
-    container_name: best-studio
-    ports:
-      - 8080:8080

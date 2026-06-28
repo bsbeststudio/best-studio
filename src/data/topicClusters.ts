@@ -1,3 +1,5 @@
+import { getCollection } from 'astro:content';
+
 export type TopicType = 'Decision' | 'Guide' | 'Myth' | 'Resource' | 'Data' | 'FAQ' | 'Case Study';
 export type TopicStatus = 'Planned' | 'Draft' | 'Published';
 
@@ -63,8 +65,6 @@ export const topicClusters: TopicCluster[] = [
     ],
     pillars: ['真实的学术职业路径', '学术界 vs 工业界的取舍', 'PhD 准备度与机会成本'],
     placeholders: [
-      { slug: 'should-you-do-phd', title: '你真的适合读 PhD 吗？', type: 'Decision', status: 'Published' },
-      { slug: 'gpa-myth', title: '误区：为什么高 GPA 还不够？', type: 'Myth', status: 'Published' },
       {
         slug: 'what-academic-careers-look-like',
         title: '学术职业真实长什么样？',
@@ -106,36 +106,6 @@ export const topicClusters: TopicCluster[] = [
     pillars: ['找到第一段科研机会', '从执行任务走向研究判断', '为推荐信积累可描述的证据'],
     placeholders: [
       {
-        slug: 'research-experience-quality',
-        title: '什么算科研经历？不是所有 RA 都等价',
-        type: 'Myth',
-        status: 'Published',
-      },
-      {
-        slug: 'how-to-find-first-ra-opportunity',
-        title: '如何找到第一段 RA 机会？',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'cold-email-guide',
-        title: '套磁邮件怎么写？给教授发邮件的完整指南',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'how-to-work-with-professor',
-        title: '如何和教授合作，而不浪费这段关系？',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'independent-research-vs-assistant',
-        title: '独立研究 vs 辅助工作：哪种 RA 经历更有价值？',
-        type: 'Decision',
-        status: 'Published',
-      },
-      {
         slug: 'how-to-build-research-portfolio',
         title: '如何建立你的科研档案？',
         type: 'Guide',
@@ -163,36 +133,6 @@ export const topicClusters: TopicCluster[] = [
     ],
     pillars: ['RA 与 Predoc 的本质区别', 'Predoc 申请策略', '导师评估与项目选择'],
     placeholders: [
-      {
-        slug: 'predoc-complete-guide',
-        title: '什么是 Predoc？经济学 Predoc 完整指南',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'ra-vs-predoc',
-        title: 'RA vs Predoc：真正的区别是什么？',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'advisor-signal-decoding',
-        title: '如何判断一个 Predoc 或 RA 导师是否值得合作？',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'work-authorization-strategy',
-        title: '工作签证与身份：中国学生申请 Predoc 和 RA 前必须知道的事',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'who-should-not-do-predoc',
-        title: '谁不应该做 Predoc？',
-        type: 'Decision',
-        status: 'Published',
-      },
       {
         slug: 'predoc-application-timeline',
         title: 'Predoc 申请时间线',
@@ -228,48 +168,6 @@ export const topicClusters: TopicCluster[] = [
     pillars: ['申请策略', '材料与推荐信', '选校与面试'],
     placeholders: [
       {
-        slug: 'phd-application-timeline',
-        title: 'PhD 申请时间线：12 个月规划指南',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'recommendation-letters',
-        title: '推荐信：招生委员会真正看什么？',
-        type: 'Myth',
-        status: 'Published',
-      },
-      {
-        slug: 'academic-cv-guide',
-        title: 'Academic CV 怎么写？经济学 PhD 申请简历指南',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'narrative-fragmentation',
-        title: '为什么你的申请材料讲不出一个完整故事？',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'sop-guide',
-        title: '研究型申请者的 SOP 指南',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
-        slug: 'school-list-strategy',
-        title: '选校策略：冲刺、匹配和保底项目怎么分配？',
-        type: 'Decision',
-        status: 'Published',
-      },
-      {
-        slug: 'phd-interview-prep',
-        title: 'PhD 面试准备：经济学 PhD 面试会问什么？',
-        type: 'Guide',
-        status: 'Published',
-      },
-      {
         slug: 'recommendation-request-email-templates',
         title: '推荐信请求邮件模板',
         type: 'Resource',
@@ -297,9 +195,77 @@ export const getClusterCaseStudyPage = (cluster: TopicCluster): TopicPlaceholder
   headings: caseStudyHeadings,
 });
 
-export const getTopicPages = (): TopicPage[] =>
-  topicClusters.flatMap((cluster) =>
-    [...cluster.placeholders, getClusterFaqPage(cluster), getClusterCaseStudyPage(cluster)].map((topic) => ({
+/** Hub 页和 content-map 用：合并了已发布文章（来自 .md）和规划中占位（来自此文件）。 */
+export type ClusterItem = {
+  slug: string;
+  title: string;
+  type: TopicType;
+  status: TopicStatus;
+  /** 已发布文章指向 /guides/，规划中占位指向 /topics/ */
+  href: string;
+};
+
+export const getClusterItems = async (clusterSlug: string): Promise<ClusterItem[]> => {
+  const cluster = topicClusters.find((c) => c.slug === clusterSlug);
+  if (!cluster) return [];
+
+  const posts = await getCollection('post');
+
+  const published: ClusterItem[] = posts
+    .filter((p) => p.data.topicCluster === clusterSlug)
+    .map((p) => {
+      const slug = p.id.replace(/\.mdx?$/, '');
+      return {
+        slug,
+        title: p.data.title,
+        type: (p.data.topicType ?? 'Guide') as TopicType,
+        status: 'Published' as const,
+        href: `/guides/${slug}`,
+      };
+    });
+
+  const planned: ClusterItem[] = cluster.placeholders.map((item) => ({
+    slug: item.slug,
+    title: item.title,
+    type: item.type,
+    status: item.status,
+    href: topicPath(item),
+  }));
+
+  return [...published, ...planned];
+};
+
+export const getTopicPages = async (): Promise<TopicPage[]> => {
+  const posts = await getCollection('post');
+
+  return topicClusters.flatMap((cluster) => {
+    // 已发布文章：从 .md frontmatter 读取，/topics/ 路由只作 301 跳转
+    const publishedPages: TopicPage[] = posts
+      .filter((p) => p.data.topicCluster === cluster.slug)
+      .map((p) => {
+        const slug = p.id.replace(/\.mdx?$/, '');
+        return {
+          slug,
+          title: p.data.title,
+          type: (p.data.topicType ?? 'Guide') as TopicType,
+          status: 'Published' as const,
+          cluster,
+          canonical: topicPath({ slug }),
+          description: p.data.excerpt ?? `${p.data.title} — Best Studio「${cluster.title}」主题下的中文指南。`,
+          breadcrumbs: [
+            { text: '首页', href: '/' },
+            { text: cluster.title, href: `/${cluster.slug}` },
+            { text: p.data.title, href: topicPath({ slug }) },
+          ],
+        };
+      });
+
+    // 规划中占位：仍从此文件读取，/topics/ 路由渲染占位页
+    const plannedPages: TopicPage[] = [
+      ...cluster.placeholders,
+      getClusterFaqPage(cluster),
+      getClusterCaseStudyPage(cluster),
+    ].map((topic) => ({
       ...topic,
       headings: topic.headings ?? defaultHeadings,
       cluster,
@@ -310,8 +276,11 @@ export const getTopicPages = (): TopicPage[] =>
         { text: cluster.title, href: `/${cluster.slug}` },
         { text: topic.title, href: topicPath(topic) },
       ],
-    }))
-  );
+    }));
+
+    return [...publishedPages, ...plannedPages];
+  });
+};
 
 export const findTopicCluster = (slug: string) => {
   const cluster = topicClusters.find((item) => item.slug === slug);

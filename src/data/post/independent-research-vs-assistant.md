@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+topicCluster: research-experience
+topicType: Decision
 title: '独立研究 vs 辅助工作：哪种 RA 经历更有价值？'
 excerpt: '独立提出问题和执行别人分配的任务，在申请里的信号价值差别很大。这篇文章帮你判断自己的经历属于哪种，以及如何主动往更有价值的方向走。'
 category: 科研经历

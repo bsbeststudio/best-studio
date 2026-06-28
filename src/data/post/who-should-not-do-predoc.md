@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+topicCluster: ra-predoc
+topicType: Decision
 title: '谁不应该做 Predoc？'
 excerpt: 'Predoc 不是所有人的正确选择。这篇文章帮你判断什么情况下做 Predoc 是浪费时间，以及有哪些替代路径更适合你的情况。'
 category: RA & Predoc

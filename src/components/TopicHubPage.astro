@@ -87,21 +87,20 @@ const linkList = (items: ClusterItem[]) =>
   <section class="px-4 md:px-6 py-8 mx-auto max-w-6xl">
     <div class="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">目录占位</h2>
+        <h2 class="text-lg font-bold">本页目录</h2>
         <ol class="mt-4 space-y-2 text-sm text-muted">
-          <li><a class="hover:underline" href="#introduction">简介</a></li>
-          <li><a class="hover:underline" href="#topic-clusters">主题集群</a></li>
-          <li><a class="hover:underline" href="#related-guides">相关指南</a></li>
-          <li><a class="hover:underline" href="#faq">FAQ</a></li>
-          <li><a class="hover:underline" href="#internal-links">内部链接</a></li>
+          <li><a class="hover:underline" href="#introduction">关于这个主题</a></li>
+          <li><a class="hover:underline" href="#pillars">内容支柱</a></li>
+          <li><a class="hover:underline" href="#all-content">全部内容</a></li>
+          <li><a class="hover:underline" href="#faq">常见问题</a></li>
+          <li><a class="hover:underline" href="#internal-links">相关主题</a></li>
         </ol>
       </div>
       <div id="introduction" class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">简短介绍</h2>
-        <p class="mt-3 text-muted">
-          这个 Hub 是未来文章、决策页、资源、FAQ
-          和案例的结构容器。当前页面只保留必要说明，让知识库可以持续扩展，而不堆砌空泛内容。
-        </p>
+        <h2 class="text-lg font-bold">关于这个主题</h2>
+        <div class="mt-3 space-y-3 text-muted">
+          {cluster.intro.split('\n\n').map((para) => <p>{para}</p>)}
+        </div>
       </div>
     </div>
   </section>
@@ -114,14 +113,14 @@ const linkList = (items: ClusterItem[]) =>
           {cluster.audience.map((item) => <li class="border-l border-gray-200 pl-4 dark:border-slate-700">{item}</li>)}
         </ul>
       </div>
-      <div class="md:col-span-2">
+      <div id="pillars" class="md:col-span-2">
         <h2 class="text-lg font-bold">内容支柱</h2>
         <div class="mt-4 grid gap-3 sm:grid-cols-3">
           {
-            cluster.pillars.map((item) => (
+            cluster.pillars.map((pillar) => (
               <div class="border border-gray-200 dark:border-slate-700 p-4">
-                <p class="font-medium">{item}</p>
-                <p class="mt-2 text-sm text-muted">未来属于这个支柱的文章会放在这里。</p>
+                <p class="font-medium">{pillar.title}</p>
+                <p class="mt-2 text-sm text-muted">{pillar.description}</p>
               </div>
             ))
           }
@@ -130,13 +129,13 @@ const linkList = (items: ClusterItem[]) =>
     </div>
   </section>
 
-  <section id="topic-clusters" class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
+  <section id="all-content" class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
     <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-primary">主题集群</p>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight">规划中的主题页</h2>
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">全部内容</p>
+        <h2 class="mt-2 text-3xl font-bold tracking-tight">指南、决策与资源</h2>
       </div>
-      <a class="text-sm font-semibold text-primary hover:underline" href="/content-map">查看内容地图</a>
+      <a class="text-sm font-semibold text-primary hover:underline" href="/content-map">查看完整内容地图</a>
     </div>
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
@@ -156,53 +155,30 @@ const linkList = (items: ClusterItem[]) =>
                 {item.title}
               </a>
             </h3>
-            {item.status !== 'Published' && (
-              <p class="mt-2 text-sm text-muted">
-                这是仅含标题结构的占位页，已包含 SEO 元数据、面包屑、目录占位和相关文章占位。
-              </p>
-            )}
           </article>
         ))
       }
     </div>
   </section>
 
-  <section id="related-guides" class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
-    <p class="text-sm font-semibold uppercase tracking-wide text-primary">相关指南</p>
-    <h2 class="mt-2 text-3xl font-bold tracking-tight">本 Hub 下的指南页</h2>
-    <div class="mt-6 grid gap-4 md:grid-cols-2">
+  <section id="faq" class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
+    <p class="text-sm font-semibold uppercase tracking-wide text-primary">常见问题</p>
+    <h2 class="mt-2 text-3xl font-bold tracking-tight">读者最常问的问题</h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-3">
       {
-        linkList(guides).map((item) => (
-          <a class="block border border-gray-200 dark:border-slate-700 p-5 hover:border-primary" href={item.href}>
-            {item.title}
-          </a>
+        cluster.faqs.map((faq) => (
+          <div class="border border-gray-200 dark:border-slate-700 p-5">
+            <h3 class="font-bold">{faq.q}</h3>
+            <p class="mt-2 text-sm text-muted">{faq.a}</p>
+          </div>
         ))
       }
     </div>
   </section>
 
-  <section id="faq" class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
-    <p class="text-sm font-semibold uppercase tracking-wide text-primary">FAQ</p>
-    <h2 class="mt-2 text-3xl font-bold tracking-tight">后续需要回答的问题</h2>
-    <div class="mt-6 grid gap-4 md:grid-cols-3">
-      <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h3 class="font-bold">这个 Hub 应该收录什么内容？</h3>
-        <p class="mt-2 text-sm text-muted">简短回答占位。</p>
-      </div>
-      <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h3 class="font-bold">新读者应该从哪里开始？</h3>
-        <p class="mt-2 text-sm text-muted">简短回答占位。</p>
-      </div>
-      <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h3 class="font-bold">下一篇最应该写什么？</h3>
-        <p class="mt-2 text-sm text-muted">简短回答占位。</p>
-      </div>
-    </div>
-  </section>
-
   <section id="internal-links" class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
-    <p class="text-sm font-semibold uppercase tracking-wide text-primary">内部链接</p>
-    <h2 class="mt-2 text-3xl font-bold tracking-tight">自动分组链接</h2>
+    <p class="text-sm font-semibold uppercase tracking-wide text-primary">相关主题</p>
+    <h2 class="mt-2 text-3xl font-bold tracking-tight">按类型浏览</h2>
     <div class="mt-6 grid gap-5 md:grid-cols-5">
       <div class="border border-gray-200 dark:border-slate-700 p-4">
         <h3 class="font-bold">指南页</h3>
@@ -261,12 +237,12 @@ const linkList = (items: ClusterItem[]) =>
 
   <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
     <div class="border border-primary/40 bg-gray-50 dark:bg-slate-900 p-6 md:p-8">
-      <p class="text-sm font-semibold uppercase tracking-wide text-primary">下一步</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">把这个 Hub 当作内容规划主线。</h2>
-      <p class="mt-3 text-muted">只有当某个主题在这个集群里有明确的决策价值、证据价值或资源价值时，再补详细文章。</p>
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">需要个人指导？</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">每个人的情况都不一样。</h2>
+      <p class="mt-3 text-muted">文章能解决通用问题，但你的背景、时间线和目标是独特的。如果你想针对自己的情况做具体判断，可以预约 1 对 1 辅导。</p>
       <div class="mt-6 flex flex-wrap gap-3">
-        <a class="btn-primary" href="/start-here">从这里开始</a>
-        <a class="btn" href="/mentoring">了解辅导</a>
+        <a class="btn-primary" href="/mentoring">了解辅导服务</a>
+        <a class="btn" href="/start-here">从这里开始阅读</a>
       </div>
     </div>
   </section>

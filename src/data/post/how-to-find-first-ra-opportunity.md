@@ -135,6 +135,7 @@ metadata:
 ## 相关阅读
 
 - [什么算科研经历？不是所有 RA 都等价](/guides/research-experience-quality)
-- [如何和教授合作而不浪费这段关系](/topics/how-to-work-with-professor)
-- [独立研究 vs 辅助工作：哪个更有价值？](/topics/independent-research-vs-assistant-work)
+- [如何和教授合作而不浪费这段关系](/guides/how-to-work-with-professor)
+- [独立研究 vs 辅助工作：哪个更有价值？](/guides/independent-research-vs-assistant)
+- [套磁邮件怎么写？给教授发邮件完整指南](/guides/cold-email-guide)
 - [什么是 Predoc？](/guides/predoc-complete-guide)

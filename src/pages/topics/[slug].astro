@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
-import { getTopicPages, typeLabels } from '~/data/topicClusters';
+import { getTopicPages, getClusterItems, typeLabels } from '~/data/topicClusters';
 import { fetchPosts } from '~/utils/blog';
 
 export const prerender = true;
@@ -25,7 +25,9 @@ if (hasPost) {
   return Astro.redirect(`/guides/${topic.slug}`, 301);
 }
 
-const headings = topic.headings ?? [];
+// Get related published content from the same cluster
+const clusterItems = await getClusterItems(topic.cluster.slug);
+const relatedPublished = clusterItems.filter((item) => item.status === 'Published').slice(0, 4);
 
 const metadata = {
   title: `${topic.title} | Best Studio`,
@@ -54,32 +56,53 @@ const metadata = {
       }
     </nav>
   </section>
+
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <p class="text-sm font-semibold uppercase tracking-wide text-primary">{typeLabels[topic.type]}占位页</p>
+    <p class="text-sm font-semibold uppercase tracking-wide text-primary">{typeLabels[topic.type]} · {topic.cluster.title}</p>
     <h1 class="mt-4 font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{topic.title}</h1>
-    <p class="mt-5 text-xl text-muted">这个页面目前只放标题结构。等文章准备好后，再补充详细内容。</p>
-  </section>
-  <section class="px-4 md:px-6 pb-8 mx-auto max-w-4xl">
-    <div class="border border-gray-200 dark:border-slate-700 p-5">
-      <h2 class="text-lg font-bold">目录占位</h2><ol class="mt-4 space-y-2 text-sm text-muted">
-        {headings.map((heading) => <li>{heading}</li>)}
-      </ol>
+    <p class="mt-5 text-xl text-muted">{topic.description}</p>
+    <div class="mt-8 inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm text-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
+      <span>⏳</span>
+      <span>这篇文章正在撰写中。可以先阅读下方「{topic.cluster.title}」主题下已发布的相关内容。</span>
     </div>
   </section>
-  <section class="px-4 md:px-6 py-8 mx-auto max-w-4xl">
-    <div class="space-y-8">
-      {
-        headings.map((heading) => (
-          <h2 class="border-b border-gray-200 pb-3 text-2xl font-bold dark:border-slate-700">{heading}</h2>
-        ))
-      }
-    </div>
-  </section>
-  <section class="px-4 md:px-6 py-8 mx-auto max-w-4xl">
-    <div class="border border-gray-200 dark:border-slate-700 p-5">
-      <h2 class="text-lg font-bold">相关文章占位</h2><p class="mt-3 text-sm text-muted">
-        未来来自「{topic.cluster.title}」Hub 的相关文章链接会放在这里。
+
+  {relatedPublished.length > 0 && (
+    <section class="px-4 md:px-6 pb-12 mx-auto max-w-4xl">
+      <h2 class="text-2xl font-bold tracking-tight">「{topic.cluster.title}」相关阅读</h2>
+      <p class="mt-2 text-muted">以下文章已发布，与本主题高度相关：</p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {
+          relatedPublished.map((item) => (
+            <a
+              class="block border border-gray-200 dark:border-slate-700 p-5 hover:border-primary transition-colors"
+              href={item.href}
+            >
+              <span class="text-xs font-semibold uppercase tracking-wide text-primary">{typeLabels[item.type]}</span>
+              <p class="mt-2 font-semibold leading-snug">{item.title}</p>
+            </a>
+          ))
+        }
+      </div>
+      <div class="mt-6">
+        <a class="text-sm font-semibold text-primary hover:underline" href={`/${topic.cluster.slug}`}>
+          查看「{topic.cluster.title}」全部内容 →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="px-4 md:px-6 py-10 mx-auto max-w-4xl">
+    <div class="border border-primary/40 bg-gray-50 dark:bg-slate-900 p-6 md:p-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">需要现在就解答这个问题？</p>
+      <h2 class="mt-2 text-2xl font-bold tracking-tight">这篇文章还没写完，但这个问题可以在辅导里直接讨论。</h2>
+      <p class="mt-3 text-muted">
+        如果这个话题对你的申请决策很紧迫，预约 1 对 1 辅导可以针对你的具体情况做深入分析，而不是等一篇通用文章。
       </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="btn-primary" href="/mentoring">了解辅导服务</a>
+        <a class="btn" href={`/${topic.cluster.slug}`}>回到「{topic.cluster.title}」</a>
+      </div>
     </div>
   </section>
 </Layout>

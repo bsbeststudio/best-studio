@@ -137,4 +137,4 @@ metadata:
 - [PhD 申请时间线](/guides/phd-application-timeline)
 - [推荐信：招生委员会真正看什么？](/guides/recommendation-letters)
 - [你真的适合读 PhD 吗？](/guides/should-you-do-phd)
-- [研究型申请者 SOP 指南](/topics/sop-guide-research-oriented-applicants)
+- [研究型申请者的 SOP 指南](/guides/sop-guide)

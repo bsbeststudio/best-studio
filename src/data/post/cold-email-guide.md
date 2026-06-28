@@ -178,5 +178,6 @@ metadata:
 
 - [如何找到第一段 RA 机会？](/guides/how-to-find-first-ra-opportunity)
 - [什么是 Predoc？](/guides/predoc-complete-guide)
-- [如何和教授合作而不浪费这段关系](/topics/how-to-work-with-professor)
+- [如何和教授合作而不浪费这段关系](/guides/how-to-work-with-professor)
+- [Predoc Cover Letter 怎么写？](/guides/cover-letter-guide)
 - [RA vs Predoc：真正的区别是什么？](/guides/ra-vs-predoc)

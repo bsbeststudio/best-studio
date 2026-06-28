@@ -152,6 +152,7 @@ metadata:
 ## 相关阅读
 
 - [什么是 Predoc？](/guides/predoc-complete-guide)
-- [谁不应该做 Predoc？](/topics/who-should-not-do-a-predoc)
+- [谁不应该做 Predoc？](/guides/who-should-not-do-predoc)
+- [Predoc Cover Letter 怎么写？](/guides/cover-letter-guide)
 - [什么算科研经历？不是所有 RA 都等价](/guides/research-experience-quality)
 - [推荐信：招生委员会真正看什么？](/guides/recommendation-letters)

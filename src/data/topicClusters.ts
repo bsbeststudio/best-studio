@@ -128,7 +128,7 @@ export const topicClusters: TopicCluster[] = [
         slug: 'how-to-find-first-ra-opportunity',
         title: '如何找到第一段 RA 机会？',
         type: 'Guide',
-        status: 'Planned',
+        status: 'Published',
       },
       {
         slug: 'independent-research-vs-assistant-work',

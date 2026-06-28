@@ -1,84 +1,227 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { topicClusters } from '~/data/topicClusters';
+import { getClusterItems, topicClusters } from '~/data/topicClusters';
 
 const metadata = {
-  title: 'Best Studio | 学术早期职业规划',
+  title: 'Best Studio | 经济学 PhD、RA、Predoc 中文申请指南',
   ignoreTitleTemplate: true,
-  description: '面向中国学生的学术早期职业规划知识库，覆盖科研职业、科研经历、RA、Predoc 和 PhD 申请。',
+  description: '面向中国学生的学术早期职业知识库。覆盖科研经历积累、RA 机会、Predoc 申请、PhD 选校、SOP、推荐信和面试，帮你在每个关键决策节点做出有依据的判断。',
   canonical: '/',
-  openGraph: {
-    type: 'website',
-    url: '/',
-  },
+  openGraph: { type: 'website', url: '/' },
 };
+
+// 每个 cluster 取已发布文章
+const clusterArticles = Object.fromEntries(
+  await Promise.all(
+    topicClusters.map(async (c) => {
+      const items = await getClusterItems(c.slug);
+      return [c.slug, items.filter((i) => i.status === 'Published')];
+    })
+  )
+);
+
+// 全站精选 8 篇（每个 cluster 2 篇）
+const featured = [
+  { href: '/guides/should-you-do-phd', title: '你真的适合读 PhD 吗？', cluster: '科研职业' },
+  { href: '/guides/gpa-myth', title: '误区：为什么高 GPA 还不够？', cluster: '科研职业' },
+  { href: '/guides/how-to-find-first-ra-opportunity', title: '如何找到第一段 RA 机会？', cluster: '科研经历' },
+  { href: '/guides/research-experience-quality', title: '什么算科研经历？不是所有 RA 都等价', cluster: '科研经历' },
+  { href: '/guides/predoc-complete-guide', title: '什么是 Predoc？经济学 Predoc 完整指南', cluster: 'RA & Predoc' },
+  { href: '/guides/cover-letter-guide', title: 'Predoc Cover Letter 怎么写？', cluster: 'RA & Predoc' },
+  { href: '/guides/recommendation-letters', title: '推荐信：PhD 招生委员会真正看什么？', cluster: 'PhD 申请' },
+  { href: '/guides/sop-guide', title: '研究型申请者的 SOP 指南', cluster: 'PhD 申请' },
+];
+
+// 申请路径层级，供 Google 理解内容结构
+const pathSteps = [
+  {
+    step: '01',
+    title: '判断路径',
+    desc: '你适合走科研路线吗？学术 vs 工业，机会成本有多高？',
+    href: '/research-careers',
+    links: [
+      { title: '你真的适合读 PhD 吗？', href: '/guides/should-you-do-phd' },
+      { title: '高 GPA 为什么还不够？', href: '/guides/gpa-myth' },
+    ],
+  },
+  {
+    step: '02',
+    title: '积累科研经历',
+    desc: '什么算真正有含金量的 RA 经历？如何找到第一段机会？',
+    href: '/research-experience',
+    links: [
+      { title: '如何找到第一段 RA 机会？', href: '/guides/how-to-find-first-ra-opportunity' },
+      { title: '如何和教授合作不浪费机会？', href: '/guides/how-to-work-with-professor' },
+      { title: '独立研究 vs 辅助工作', href: '/guides/independent-research-vs-assistant' },
+      { title: '套磁邮件怎么写？', href: '/guides/cold-email-guide' },
+    ],
+  },
+  {
+    step: '03',
+    title: 'RA 或 Predoc',
+    desc: 'Predoc 是什么？值不值得做？如何判断导师和项目质量？',
+    href: '/ra-predoc',
+    links: [
+      { title: '什么是 Predoc？完整指南', href: '/guides/predoc-complete-guide' },
+      { title: 'RA vs Predoc：真正的区别', href: '/guides/ra-vs-predoc' },
+      { title: 'Predoc Cover Letter 怎么写？', href: '/guides/cover-letter-guide' },
+      { title: '如何判断导师是否值得合作？', href: '/guides/advisor-signal-decoding' },
+      { title: '谁不应该做 Predoc？', href: '/guides/who-should-not-do-predoc' },
+    ],
+  },
+  {
+    step: '04',
+    title: 'PhD 申请',
+    desc: '选校、CV、SOP、推荐信、面试——从准备到递交的完整策略。',
+    href: '/phd-applications',
+    links: [
+      { title: '推荐信：委员会真正看什么？', href: '/guides/recommendation-letters' },
+      { title: '研究型申请者的 SOP 指南', href: '/guides/sop-guide' },
+      { title: 'Academic CV 怎么写？', href: '/guides/academic-cv-guide' },
+      { title: '选校策略：冲刺 / 匹配 / 保底', href: '/guides/school-list-strategy' },
+      { title: 'PhD 面试准备指南', href: '/guides/phd-interview-prep' },
+      { title: '12 个月申请时间线', href: '/guides/phd-application-timeline' },
+    ],
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-4 md:px-6 pt-8 mx-auto max-w-6xl">
-    <nav class="text-sm text-muted" aria-label="Breadcrumb"><span>首页</span></nav>
-  </section>
 
-  <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-6xl">
-    <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+  <!-- Hero -->
+  <section class="px-4 md:px-6 py-14 sm:py-20 lg:py-24 mx-auto max-w-6xl">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-primary">学术早期职业规划</p>
+        <p class="text-sm font-semibold uppercase tracking-wide text-primary">经济学 · 政策 · 学术申请</p>
         <h1 class="mt-4 font-bold font-heading text-4xl md:text-6xl leading-tighter tracking-tighter">
-          面向中国学生的科研路径知识库。
+          从第一段 RA，到 PhD 录取。
         </h1>
         <p class="mt-6 text-xl text-muted">
-          Best Studio 按真实决策节点组织内容：要不要走科研路线、如何积累科研经历、RA 或 Predoc 是否值得做，以及 PhD
-          申请到底看什么。
+          Best Studio 是面向中国学生的学术早期职业知识库，按真实决策节点组织内容：判断路径、积累科研经历、申请 RA 或 Predoc、准备 PhD 申请材料。
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a class="btn-primary" href="/start-here">从这里开始</a>
-          <a class="btn" href="/content-map">查看内容地图</a>
+          <a class="btn-primary" href="/start-here">找到你的起点</a>
+          <a class="btn" href="/guides">浏览全部指南</a>
         </div>
       </div>
-      <div class="border border-gray-200 dark:border-slate-700 p-6">
-        <p class="text-sm font-semibold text-muted">为长期内容库设计</p>
-        <dl class="mt-6 grid grid-cols-2 gap-6">
-          <div><dt class="text-3xl font-bold">4</dt><dd class="text-sm text-muted">核心 Hub</dd></div>
-          <div><dt class="text-3xl font-bold">26+</dt><dd class="text-sm text-muted">主题页占位</dd></div>
-          <div><dt class="text-3xl font-bold">5</dt><dd class="text-sm text-muted">内容类型</dd></div>
-          <div><dt class="text-3xl font-bold">100s</dt><dd class="text-sm text-muted">未来文章容量</dd></div>
-        </dl>
+      <div class="border border-gray-200 dark:border-slate-700 p-6 space-y-4">
+        <p class="text-sm font-semibold text-muted uppercase tracking-wide">快速入口</p>
+        <nav class="space-y-2 text-sm">
+          <a class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-slate-800 hover:text-primary" href="/research-careers">
+            <span>01 · 科研职业路径判断</span><span class="text-muted">→</span>
+          </a>
+          <a class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-slate-800 hover:text-primary" href="/research-experience">
+            <span>02 · 科研经历积累</span><span class="text-muted">→</span>
+          </a>
+          <a class="flex items-center justify-between py-2 border-b border-gray-100 dark:border-slate-800 hover:text-primary" href="/ra-predoc">
+            <span>03 · RA 与 Predoc 申请</span><span class="text-muted">→</span>
+          </a>
+          <a class="flex items-center justify-between py-2 hover:text-primary" href="/phd-applications">
+            <span>04 · PhD 申请策略</span><span class="text-muted">→</span>
+          </a>
+        </nav>
       </div>
     </div>
   </section>
 
+  <!-- 申请路径层级 -->
   <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
     <div class="mb-8">
-      <p class="text-sm font-semibold uppercase tracking-wide text-primary">主题 Hub</p>
-      <h2 class="mt-2 text-3xl font-bold tracking-tight">从你正在面对的决策开始</h2>
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">申请路径</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">从判断方向到拿到录取</h2>
+      <p class="mt-3 text-muted max-w-2xl">每个阶段的核心问题和对应指南，按决策顺序排列。你可以从任意一个阶段进入。</p>
     </div>
-    <div class="grid gap-5 md:grid-cols-2">
-      {
-        topicClusters.map((cluster) => (
-          <a
-            class="block border border-gray-200 dark:border-slate-700 p-6 hover:border-primary"
-            href={`/${cluster.slug}`}
-          >
-            <p class="text-sm font-semibold text-primary">{cluster.kicker}</p>
-            <h3 class="mt-2 text-2xl font-bold">{cluster.title}</h3>
-            <p class="mt-3 text-muted">{cluster.description}</p>
-            <p class="mt-5 text-sm font-semibold">打开 Hub</p>
-          </a>
-        ))
-      }
+    <div class="grid gap-6 md:grid-cols-2">
+      {pathSteps.map((step) => (
+        <div class="border border-gray-200 dark:border-slate-700 p-6">
+          <div class="flex items-start gap-4">
+            <span class="text-3xl font-bold text-primary/30 leading-none">{step.step}</span>
+            <div class="flex-1">
+              <a class="text-xl font-bold hover:text-primary" href={step.href}>{step.title}</a>
+              <p class="mt-1 text-sm text-muted">{step.desc}</p>
+              <ul class="mt-4 space-y-1.5">
+                {step.links.map((link) => (
+                  <li>
+                    <a class="text-sm hover:underline hover:text-primary" href={link.href}>
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a class="mt-4 inline-block text-xs font-semibold text-primary hover:underline" href={step.href}>
+                查看完整 Hub →
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
-  <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
-    <div class="grid gap-5 md:grid-cols-2">
+  <!-- 精选文章 -->
+  <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
+    <div class="mb-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">精选指南</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">最常被阅读的内容</h2>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {featured.map((item) => (
+        <a
+          class="block border border-gray-200 dark:border-slate-700 p-5 hover:border-primary transition-colors"
+          href={item.href}
+        >
+          <span class="text-xs font-semibold uppercase tracking-wide text-primary">{item.cluster}</span>
+          <p class="mt-2 font-semibold leading-snug text-sm">{item.title}</p>
+        </a>
+      ))}
+    </div>
+    <div class="mt-6 text-center">
+      <a class="text-sm font-semibold text-primary hover:underline" href="/guides">查看全部 {Object.values(clusterArticles).flat().length} 篇已发布指南 →</a>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
+    <div class="mb-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">常见问题</p>
+      <h2 class="mt-2 text-3xl font-bold tracking-tight">读者最常问的问题</h2>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">目录占位</h2>
-        <p class="mt-3 text-sm text-muted">Hero、主题 Hub、相关文章和未来首页 FAQ。</p>
+        <h3 class="font-bold">没有科研经历，应该从哪里开始？</h3>
+        <p class="mt-2 text-sm text-muted">先读「科研经历」Hub，重点看如何找第一段 RA 机会和套磁邮件写法。起点是找到一位助理教授并发一封经过认真准备的邮件。</p>
+        <a class="mt-3 inline-block text-xs font-semibold text-primary hover:underline" href="/guides/how-to-find-first-ra-opportunity">阅读完整指南 →</a>
       </div>
       <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">相关文章占位</h2>
-        <p class="mt-3 text-sm text-muted">未来精选指南和决策页会放在这里。</p>
+        <h3 class="font-bold">Predoc 和普通 RA 有什么本质区别？</h3>
+        <p class="mt-2 text-sm text-muted">Predoc 是全职科研职位，明确以 PhD 申请为方向，有固定薪资，通常深度参与研究全流程。关键在于参与深度和推荐信质量，而非职位头衔。</p>
+        <a class="mt-3 inline-block text-xs font-semibold text-primary hover:underline" href="/guides/ra-vs-predoc">阅读完整指南 →</a>
+      </div>
+      <div class="border border-gray-200 dark:border-slate-700 p-5">
+        <h3 class="font-bold">国内教授的推荐信在北美申请里有用吗？</h3>
+        <p class="mt-2 text-sm text-muted">有用，但权重系统性偏低，原因是网络隔离而非信件质量。解决路径是通过 Predoc 获取北美 PI 的推荐信，再申请 PhD。</p>
+        <a class="mt-3 inline-block text-xs font-semibold text-primary hover:underline" href="/guides/recommendation-letters">阅读完整指南 →</a>
       </div>
     </div>
   </section>
+
+  <!-- CTA -->
+  <section class="px-4 md:px-6 py-12 mx-auto max-w-6xl">
+    <div class="border border-primary/40 bg-gray-50 dark:bg-slate-900 p-6 md:p-10">
+      <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wide text-primary">需要个人指导？</p>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight">文章解决通用问题。你的情况需要具体分析。</h2>
+          <p class="mt-3 text-muted">
+            Profile Review、CV 诊断、Predoc Cover Letter 修改、Mock Interview——预约 1 对 1 辅导，针对你的背景、时间线和目标给出判断。
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <a class="btn-primary whitespace-nowrap" href="/mentoring">了解辅导服务</a>
+          <a class="btn whitespace-nowrap text-center" href="/start-here">找到你的起点</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>

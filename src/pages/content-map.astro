@@ -33,7 +33,7 @@ const statusClass = {
       Hub + Topic Cluster 路线图。
     </h1>
     <p class="mt-5 max-w-3xl text-xl text-muted">
-      这个页面展示未来内容系统。每个占位主题都有所属 Hub、内容类型和状态，方便知识库持续扩展。
+      这个页面展示 Best Studio 的内容结构：四个主题 Hub、已发布和规划中的指南，以及每篇文章的类型和状态。
     </p>
   </section>
   <section class="px-4 md:px-6 py-8 mx-auto max-w-6xl">
@@ -63,15 +63,25 @@ const statusClass = {
     </div>
   </section>
   <section class="px-4 md:px-6 py-10 mx-auto max-w-6xl">
-    <div class="grid gap-5 md:grid-cols-2">
-      <div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">目录占位</h2><p class="mt-3 text-sm text-muted">
-          Hub 列表、主题页清单、状态说明和未来路线图备注。
-        </p>
-      </div><div class="border border-gray-200 dark:border-slate-700 p-5">
-        <h2 class="text-lg font-bold">相关文章占位</h2><p class="mt-3 text-sm text-muted">
-          未来编辑规划说明会放在这里。
-        </p>
+    <div class="border border-gray-200 dark:border-slate-700 p-6 md:p-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-primary">编辑说明</p>
+      <h2 class="mt-2 text-2xl font-bold tracking-tight">内容优先级与扩展方向</h2>
+      <p class="mt-3 text-muted max-w-3xl">
+        Best Studio 的扩展策略是：先深化已有 Hub 的覆盖密度，再开拓新主题。每篇指南至少覆盖 3000 字，包含真实的案例逻辑和内部链接，再考虑添加新文章。
+      </p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3 text-sm">
+        <div>
+          <p class="font-bold">已完成（Published）</p>
+          <p class="mt-1 text-muted">已经发布、可以被 Google 索引的完整指南，覆盖核心申请路径的主要决策点。</p>
+        </div>
+        <div>
+          <p class="font-bold">草稿（Draft）</p>
+          <p class="mt-1 text-muted">已经开始写但尚未完成的内容，预计在本季度内完成并发布。</p>
+        </div>
+        <div>
+          <p class="font-bold">规划中（Planned）</p>
+          <p class="mt-1 text-muted">已经识别为有读者需求的选题，但尚未开始撰写。有想读的选题，欢迎通过辅导页面告知。</p>
+        </div>
       </div>
     </div>
   </section>

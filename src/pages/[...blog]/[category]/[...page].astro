@@ -20,7 +20,8 @@ const { page, category } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Category '${category.title}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  title: `${category.title}${currentPage > 1 ? ` — 第 ${currentPage} 页` : ''}`,
+  description: `Best Studio「${category.title}」分类下的所有深度指南，覆盖经济学科研经历、RA、Predoc 和 PhD 申请。`,
   robots: {
     index: blogCategoryRobots?.index,
     follow: blogCategoryRobots?.follow,

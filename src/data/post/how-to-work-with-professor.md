@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: research-experience
 topicType: Guide
 title: '如何和教授合作，而不浪费这段关系？'

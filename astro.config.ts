@@ -15,7 +15,7 @@ import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
+import { readingTimeRemarkPlugin, faqExtractRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -27,7 +27,12 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
-    sitemap(),
+    sitemap({
+      // Exclude tag pages (noindex) and CDN paths from generated sitemap
+      filter: (page: string) =>
+        !page.includes('/tag/') &&
+        !page.includes('/cdn-cgi/'),
+    }),
     mdx(),
     icon({
       include: {
@@ -76,7 +81,7 @@ export default defineConfig({
 
   markdown: {
     processor: unified({
-      remarkPlugins: [readingTimeRemarkPlugin],
+      remarkPlugins: [readingTimeRemarkPlugin, faqExtractRemarkPlugin],
       rehypePlugins: [responsiveTablesRehypePlugin],
     }),
   },
@@ -88,6 +93,6 @@ export default defineConfig({
         '~': path.resolve(__dirname, './src'),
       },
     },
-    cacheDir: '/tmp/vite-cache',
+    cacheDir: "/tmp/vite-cache-2",
   },
 });

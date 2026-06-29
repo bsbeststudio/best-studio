@@ -8,10 +8,13 @@ import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
-import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
+import { getStaticPathsBlogPost, blogPostRobots, getAdjacentPosts } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
+import PrevNextNav from '~/components/blog/PrevNextNav.astro';
+import JsonLd from '~/components/common/JsonLd.astro';
+import { SITE } from 'astrowind:config';
 
 export const prerender = true;
 
@@ -25,10 +28,21 @@ const { post } = Astro.props as Props;
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
+const siteUrl = SITE?.site || 'https://best-studio-6yx.pages.dev';
+
+const { prev, next } = await getAdjacentPosts(post);
+
+const breadcrumbs = [
+  { name: '首页', url: siteUrl },
+  { name: '指南', url: `${siteUrl}/guides` },
+  ...(post.category ? [{ name: post.category.title, url: `${siteUrl}/category/${post.category.slug}` }] : []),
+  { name: post.title, url: String(url) },
+];
 
 const metadata = merge(
   {
     title: post.title,
+    ignoreTitleTemplate: !!post.metadata?.title,
     description: post.excerpt,
     robots: {
       index: blogPostRobots?.index,
@@ -46,9 +60,25 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="head">
+    <JsonLd
+      article={{
+        headline: post.metadata?.title || post.title,
+        description: post.excerpt,
+        datePublished: post.publishDate.toISOString(),
+        dateModified: (post.updateDate || post.publishDate).toISOString(),
+        authorName: post.author,
+        imageUrl: typeof image === 'string' ? image : (image as ImageMetadata)?.src,
+        url: String(url),
+      }}
+      faqs={post.faqs}
+      breadcrumbs={breadcrumbs}
+    />
+  </Fragment>
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content && <post.Content />}
   </SinglePost>
+  <PrevNextNav prev={prev} next={next} />
   <ToBlogLink />
   <RelatedPosts post={post} />
 </Layout>

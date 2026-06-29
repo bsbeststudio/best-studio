@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: phd-applications
 topicType: Guide
 title: 'PhD 申请时间线：12 个月规划指南'
@@ -227,4 +229,3 @@ metadata:
 - [你真的适合读 PhD 吗？](/guides/should-you-do-phd)
 - [什么是 Predoc？](/guides/predoc-complete-guide)
 - [研究型申请者的 SOP 指南](/guides/sop-guide)
-                          

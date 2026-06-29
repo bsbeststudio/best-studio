@@ -53,6 +53,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     tags: rawTags = [],
     category: rawCategory,
     author,
+    topicCluster,
     draft = false,
     metadata = {},
   } = data;
@@ -97,6 +98,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     // or 'content' in case you consume from API
 
     readingTime: remarkPluginFrontmatter?.readingTime,
+    faqs: remarkPluginFrontmatter?.faqs,
+    topicCluster: topicCluster,
   };
 };
 
@@ -252,6 +255,9 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
     if (iteratedPost.slug === originalPost.slug) return acc;
 
     let score = 0;
+    if (iteratedPost.topicCluster && originalPost.topicCluster && iteratedPost.topicCluster === originalPost.topicCluster) {
+      score += 8;
+    }
     if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {
       score += 5;
     }
@@ -278,4 +284,17 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
   }
 
   return selectedPosts;
+}
+
+export async function getAdjacentPosts(post: Post): Promise<{ prev: Post | null; next: Post | null }> {
+  const allPosts = await fetchPosts();
+  const group = post.topicCluster
+    ? allPosts.filter((p) => p.topicCluster === post.topicCluster)
+    : allPosts;
+  const sorted = [...group].sort((a, b) => a.publishDate.valueOf() - b.publishDate.valueOf());
+  const idx = sorted.findIndex((p) => p.slug === post.slug);
+  return {
+    prev: idx > 0 ? sorted[idx - 1] : null,
+    next: idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null,
+  };
 }

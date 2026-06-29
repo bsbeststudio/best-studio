@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-28T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: ra-predoc
 topicType: Guide
 title: 'Predoc Cover Letter 怎么写？从逻辑到结构的完整指南'

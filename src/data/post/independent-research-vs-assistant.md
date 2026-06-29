@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: research-experience
 topicType: Decision
 title: '独立研究 vs 辅助工作：哪种 RA 经历更有价值？'

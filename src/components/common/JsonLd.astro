@@ -1,0 +1,157 @@
+---
+/**
+ * JsonLd.astro
+ * Renders structured data (JSON-LD) for SEO.
+ * Supports: WebSite, Organization, Article, FAQPage, BreadcrumbList
+ */
+import { SITE } from 'astrowind:config';
+
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+export interface Props {
+  /** Render sitewide WebSite + Organization schemas */
+  sitewide?: boolean;
+  /** Article schema data */
+  article?: {
+    headline: string;
+    description?: string;
+    datePublished: string;
+    dateModified?: string;
+    authorName?: string;
+    imageUrl?: string;
+    url: string;
+  };
+  /** FAQ items for FAQPage schema */
+  faqs?: FaqItem[];
+  /** Breadcrumb items for BreadcrumbList schema */
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const { sitewide = false, article, faqs, breadcrumbs } = Astro.props;
+
+const siteUrl = SITE?.site || 'https://best-studio-6yx.pages.dev';
+const siteName = SITE?.name || 'Best Studio';
+
+const schemas: object[] = [];
+
+// ── WebSite ──────────────────────────────────────────────────────────────────
+if (sitewide) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: siteUrl,
+    description: '面向中国学生的学术早期职业规划知识库，覆盖科研经历、RA、Predoc、PhD 申请。',
+    inLanguage: 'zh-CN',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteUrl}/guides?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  });
+
+  // ── Organization ──────────────────────────────────────────────────────────
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteName,
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/favicon.svg`,
+    },
+    description: '面向中国学生的学术早期职业规划平台，提供经济学 PhD、RA、Predoc 申请的深度中文指南和一对一辅导。',
+    sameAs: [],
+  });
+}
+
+// ── Article ───────────────────────────────────────────────────────────────────
+if (article) {
+  const articleSchema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.headline,
+    url: article.url,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    inLanguage: 'zh-CN',
+    publisher: {
+      '@type': 'Organization',
+      name: siteName,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.svg`,
+      },
+    },
+  };
+
+  if (article.description) articleSchema.description = article.description;
+
+  if (article.authorName) {
+    articleSchema.author = {
+      '@type': 'Person',
+      name: article.authorName,
+      url: `${siteUrl}/about`,
+    };
+  } else {
+    articleSchema.author = {
+      '@type': 'Organization',
+      name: siteName,
+    };
+  }
+
+  if (article.imageUrl) {
+    articleSchema.image = {
+      '@type': 'ImageObject',
+      url: article.imageUrl,
+    };
+  }
+
+  schemas.push(articleSchema);
+}
+
+// ── FAQPage ───────────────────────────────────────────────────────────────────
+if (faqs && faqs.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  });
+}
+
+// ── BreadcrumbList ────────────────────────────────────────────────────────────
+if (breadcrumbs && breadcrumbs.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  });
+}
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

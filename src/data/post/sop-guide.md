@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: phd-applications
 topicType: Guide
 title: '研究型申请者的 SOP 指南：如何写出有说服力的陈述？'

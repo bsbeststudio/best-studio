@@ -1,15 +1,54 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE?.site || 'https://best-studio-6yx.pages.dev';
 
 const metadata = {
   title: '关于 Best Studio | 经济学 PhD、RA、Predoc 中文申请指南',
+  ignoreTitleTemplate: true,
   description: '关于 Best Studio：面向中国学生的学术早期职业知识库，覆盖科研经历、RA、Predoc 和 PhD 申请四个核心主题。',
   canonical: '/about',
   openGraph: { type: 'website', url: '/about' },
 };
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Lauren Qu',
+  url: `${siteUrl}/about`,
+  jobTitle: 'Pre-doctoral Research Fellow',
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Massachusetts Institute of Technology',
+    sameAs: 'https://www.mit.edu',
+  },
+  knowsAbout: [
+    'Economics PhD Applications',
+    'Research Assistantship',
+    'Pre-doctoral Fellowship',
+    'Academic Career Planning',
+    'Statement of Purpose Writing',
+  ],
+  description: '经济学 Predoc，专注于帮助中国学生理解学术早期职业路径的规划与申请。',
+  sameAs: [],
+};
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Best Studio',
+  url: siteUrl,
+  description: '面向中国学生的学术早期职业规划平台，专注经济学 PhD、RA、Predoc 申请的深度中文指南。',
+  founder: { '@type': 'Person', name: 'Lauren Qu' },
+};
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </Fragment>
   <section class="px-4 md:px-6 pt-8 mx-auto max-w-4xl">
     <nav class="text-sm text-muted" aria-label="Breadcrumb">
       <a class="hover:underline" href="/">首页</a><span class="mx-2">/</span><span>关于</span>

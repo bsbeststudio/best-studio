@@ -1,168 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Hub pages -->
   <url>
     <loc>https://best-studio-6yx.pages.dev/</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/start-here</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/research-careers</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/research-experience</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/ra-predoc</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/phd-applications</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/content-map</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/mentoring</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/resources</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/about</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/privacy</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/terms</loc>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <!-- Guides -->
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/should-you-do-phd</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/gpa-myth</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/how-to-find-first-ra-opportunity</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/cold-email-guide</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/how-to-work-with-professor</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/independent-research-vs-assistant</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/cold-email-guide</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/research-experience-quality</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/predoc-complete-guide</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/ra-vs-predoc</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/cover-letter-guide</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/advisor-signal-decoding</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/who-should-not-do-predoc</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/recommendation-letters</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/sop-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/academic-cv-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/school-list-strategy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/phd-interview-prep</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/phd-application-timeline</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://best-studio-6yx.pages.dev/guides/narrative-fragmentation</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://best-studio-6yx.pages.dev/guides/work-authorization-strategy</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/recommendation-letters</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/sop-guide</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/academic-cv-guide</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/school-list-strategy</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/phd-interview-prep</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/phd-application-timeline</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://best-studio-6yx.pages.dev/guides/narrative-fragmentation</loc>
+    <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

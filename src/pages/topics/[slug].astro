@@ -29,10 +29,13 @@ if (hasPost) {
 const clusterItems = await getClusterItems(topic.cluster.slug);
 const relatedPublished = clusterItems.filter((item) => item.status === 'Published').slice(0, 4);
 
+const isPublished = topic.status === 'Published';
 const metadata = {
   title: `${topic.title} | Best Studio`,
+  ignoreTitleTemplate: true,
   description: topic.description,
   canonical: topic.canonical,
+  robots: { index: isPublished, follow: true },
   openGraph: { type: 'article', url: topic.canonical },
 };
 ---

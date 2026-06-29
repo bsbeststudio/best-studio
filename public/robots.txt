@@ -1,2 +1,9 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Noindex pages — block crawlers
+Disallow: /tag/
+Disallow: /cdn-cgi/
+
+Sitemap: https://best-studio-6yx.pages.dev/sitemap-index.xml
+Sitemap: https://best-studio-6yx.pages.dev/sitemap.xml

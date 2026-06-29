@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: phd-applications
 topicType: Guide
 title: '推荐信：PhD 招生委员会真正看什么？'

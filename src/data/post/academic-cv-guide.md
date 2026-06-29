@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: phd-applications
 topicType: Guide
 title: 'Academic CV 怎么写？经济学 PhD 申请简历指南'

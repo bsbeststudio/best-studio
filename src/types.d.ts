@@ -30,6 +30,8 @@ export interface Post {
 
   /** Estimated reading time in minutes. */
   readingTime?: number;
+  faqs?: Array<{ q: string; a: string }>;
+  topicCluster?: string;
 }
 
 export interface Taxonomy {

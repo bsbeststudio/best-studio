@@ -1,0 +1,76 @@
+---
+/**
+ * TableOfContents.astro
+ * Renders a sticky Table of Contents for article pages.
+ * Extracts H2/H3 headings from the article prose area client-side.
+ * Only shows when there are ≥3 headings.
+ */
+---
+
+<div id="toc-container" class="hidden">
+  <aside
+    id="toc"
+    class="not-prose mb-8 rounded border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 p-5"
+    aria-label="目录"
+  >
+    <p class="text-sm font-bold uppercase tracking-wide text-muted mb-3">本文目录</p>
+    <nav id="toc-nav">
+      <ol id="toc-list" class="space-y-1 text-sm text-muted list-none pl-0" />
+    </nav>
+  </aside>
+</div>
+
+<script>
+  function buildToc() {
+    const article = document.querySelector('article .prose');
+    if (!article) return;
+
+    const headings = Array.from(article.querySelectorAll('h2, h3')) as HTMLElement[];
+    if (headings.length < 3) return;
+
+    const list = document.getElementById('toc-list');
+    const container = document.getElementById('toc-container');
+    if (!list || !container) return;
+
+    list.innerHTML = '';
+
+    headings.forEach((heading) => {
+      // Ensure heading has an id for anchor linking
+      if (!heading.id) {
+        heading.id = heading.textContent!
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w一-龥-]/g, '');
+      }
+
+      const li = document.createElement('li');
+      const isH3 = heading.tagName === 'H3';
+      li.className = isH3 ? 'pl-4' : '';
+
+      const a = document.createElement('a');
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent || '';
+      a.className =
+        'hover:text-primary transition-colors hover:underline block py-0.5' +
+        (isH3 ? ' text-xs opacity-80' : '');
+
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+
+    container.classList.remove('hidden');
+
+    // Insert ToC after the first paragraph in the prose area
+    const firstPara = article.querySelector('p');
+    if (firstPara && firstPara.nextSibling) {
+      article.insertBefore(container, firstPara.nextSibling);
+    } else {
+      article.insertBefore(container, article.firstChild);
+    }
+  }
+
+  // Run after DOM is ready (handles Astro View Transitions)
+  document.addEventListener('DOMContentLoaded', buildToc);
+  document.addEventListener('astro:page-load', buildToc);
+</script>

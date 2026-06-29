@@ -1,5 +1,7 @@
 ---
 publishDate: 2026-06-27T00:00:00Z
+author: 'Best Studio'
+updateDate: 2026-06-28T00:00:00Z
 topicCluster: phd-applications
 topicType: Guide
 title: '为什么你的申请材料看起来很优秀，却讲不出一个完整故事？'
@@ -174,4 +176,3 @@ metadata:
 - [推荐信：招生委员会真正看什么？](/guides/recommendation-letters)
 - [你真的适合读 PhD 吗？](/guides/should-you-do-phd)
 - [研究型申请者的 SOP 指南](/guides/sop-guide)
-                          
